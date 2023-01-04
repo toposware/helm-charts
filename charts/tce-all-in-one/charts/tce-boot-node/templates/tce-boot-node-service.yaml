@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.fullName }}
+  labels:
+    app: {{ .Values.fullName }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.ports.p2p }}
+      targetPort: p2p
+      protocol: TCP
+      name: p2p
+    - port: {{ .Values.ports.http }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ .Values.fullName }}
+  sessionAffinity: ClientIP

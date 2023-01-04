@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fullName }}
+  labels:
+    app: {{ .Values.fullName }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.fullName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.fullName }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.fullName }}-pull-secret
+      containers:
+        - name: {{ .Values.fullName }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: p2p
+              containerPort: {{ .Values.ports.p2p }}
+              protocol: TCP
+            - name: http
+              containerPort: {{ .Values.ports.http }}
+              protocol: TCP
+          env:
+            - name: TCE_LOCAL_KS
+              value: "1"
