@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  observability:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-05T00:27:12.115210957Z"
+    description: A Helm chart for Kubernetes
+    digest: 0145f61d9ad63dd7d6e851f36d26b7a215e317cd926dfa1a36c56c2932519602
+    name: observability
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/observability-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-01-05T00:27:12.112131076Z"
