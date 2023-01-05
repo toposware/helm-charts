@@ -21,7 +21,5 @@ jobs:
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.1.0
-        with:
-          charts_repo_url: https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/
         env:
           CR_TOKEN: ${{ secrets.ROBOT_TOPOSWARE_PRIV_REPOS_TOKEN }}
