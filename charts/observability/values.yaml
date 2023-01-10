@@ -3,7 +3,6 @@
 # Declare variables to be passed into your templates.
 
 acme:
-  server: https://acme-staging-v02.api.letsencrypt.org/directory
   email: nobody@nowhere.com
 
 # possible values are staging or production
