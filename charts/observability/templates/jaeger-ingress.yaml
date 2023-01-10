@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jaeger
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+    acme.cert-manager.io/http01-edit-in-place: "true"
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.jaegerHost }}
+    secretName: "{{ .Values.jaegerHost }}-secret-tls"
+  rules:
+    - host: {{ .Values.jaegerHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: jaeger-query
+                port:
+                  number: 16686
+            path: /
+            pathType: Prefix
