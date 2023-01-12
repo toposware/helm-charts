@@ -3,9 +3,9 @@ entries:
   observability:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-12T15:33:00.174741445Z"
+    created: "2023-01-12T23:16:45.838303108Z"
     description: A Helm chart for Kubernetes
-    digest: 376bc05e92632751173e75cf418a6ab04bcb69c01c7018e6daf0611da4799935
+    digest: 43ddb95be5fdcf41ba47f58bba7098f659c261e4b1a9c1cb0d9a1ff87025803f
     name: observability
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-12T15:33:00.174506245Z"
+    created: "2023-01-12T23:16:45.8380334Z"
     description: A Helm chart for Kubernetes
     digest: ee25914ea04c4d8bcc275743354c88ab1b59a826273dc7876c716db982a089e5
     name: observability
@@ -23,7 +23,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-12T15:33:00.174241744Z"
+    created: "2023-01-12T23:16:45.837743591Z"
     description: A Helm chart for Kubernetes
     digest: 0145f61d9ad63dd7d6e851f36d26b7a215e317cd926dfa1a36c56c2932519602
     name: observability
@@ -31,4 +31,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/observability-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-12T15:33:00.173906643Z"
+generated: "2023-01-12T23:16:45.83737898Z"
