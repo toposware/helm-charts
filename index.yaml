@@ -3,7 +3,7 @@ entries:
   observability:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-13T18:00:28.431893982Z"
+    created: "2023-01-17T15:22:42.014599092Z"
     description: A Helm chart for Kubernetes
     digest: 2688f450d40beb3ec3130ee1c6e259b85da3a87e4bade524c24dfe1e50be04d1
     name: observability
@@ -13,7 +13,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-13T18:00:28.431571166Z"
+    created: "2023-01-17T15:22:42.014385691Z"
     description: A Helm chart for Kubernetes
     digest: a7a58637b31cf4437780c9c9eabfe5799eb548581f505965943b2cea620e00f9
     name: observability
@@ -23,7 +23,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-13T18:00:28.431291553Z"
+    created: "2023-01-17T15:22:42.01417079Z"
     description: A Helm chart for Kubernetes
     digest: 376bc05e92632751173e75cf418a6ab04bcb69c01c7018e6daf0611da4799935
     name: observability
@@ -33,7 +33,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-13T18:00:28.430981538Z"
+    created: "2023-01-17T15:22:42.013933589Z"
     description: A Helm chart for Kubernetes
     digest: ee25914ea04c4d8bcc275743354c88ab1b59a826273dc7876c716db982a089e5
     name: observability
@@ -43,7 +43,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-13T18:00:28.430637521Z"
+    created: "2023-01-17T15:22:42.013657987Z"
     description: A Helm chart for Kubernetes
     digest: 0145f61d9ad63dd7d6e851f36d26b7a215e317cd926dfa1a36c56c2932519602
     name: observability
@@ -51,4 +51,15 @@ entries:
     urls:
     - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/observability-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-13T18:00:28.429911787Z"
+  topos-observability:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-17T15:22:42.015135194Z"
+    description: Observability stack for Topos
+    digest: c2a32c9420dd23875c0b6f90728f1b0e4ad543157b5f3120c73f9790a811b5f7
+    name: topos-observability
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/topos-observability-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-01-17T15:22:42.013276286Z"
