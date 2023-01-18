@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boot
+  labels:
+    app: boot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: boot
+  template:
+    metadata:
+      labels:
+        app: boot
+    spec:
+      imagePullSecrets:
+        - name: {{ .Chart.Name }}-pull-secret
+      containers:
+        - name: boot
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: p2p
+              containerPort: {{ .Values.ports.p2p }}
+              protocol: TCP
+            - name: http
+              containerPort: {{ .Values.ports.http }}
+              protocol: TCP

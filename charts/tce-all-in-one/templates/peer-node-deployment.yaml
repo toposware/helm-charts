@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: peer
+  labels:
+    app: peer
+spec:
+  replicas: {{ .Values.peerReplicas }}
+  selector:
+    matchLabels:
+      app: peer
+  template:
+    metadata:
+      labels:
+        app: peer
+    spec:
+      imagePullSecrets:
+        - name: {{ .Chart.Name }}-pull-secret
+      containers:
+        - name: peer
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: p2p
+              containerPort: {{ .Values.ports.p2p }}
+              protocol: TCP
+            - name: http
+              containerPort: {{ .Values.ports.http }}
+              protocol: TCP
+          env:
+            - name: TCE_BOOT_PEERS
+              value: "12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X /dns4/boot/tcp/{{ .Values.ports.p2p }}"
