@@ -4,6 +4,8 @@
 
 peerReplicas: 5
 
+otelUrl: https://telemetry.nowhere.com
+
 ports:
   http: 8080
   p2p: 9090

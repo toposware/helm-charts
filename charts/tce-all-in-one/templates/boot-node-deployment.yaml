@@ -27,3 +27,8 @@ spec:
             - name: http
               containerPort: {{ .Values.ports.http }}
               protocol: TCP
+          env:
+            - name: TCE_LOCAL_KS
+              value: 1
+            - name: TCE_JAEGER_AGENT
+              value: {{ .Values.otelEndpoint }}

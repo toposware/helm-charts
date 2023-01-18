@@ -29,4 +29,6 @@ spec:
               protocol: TCP
           env:
             - name: TCE_BOOT_PEERS
-              value: "12D3KooWPjceQrSwdWXPyLLeABRXmuqt69Rg3sBYbU1Nft9HyQ6X /dns4/boot/tcp/{{ .Values.ports.p2p }}"
+              value: "12D3KooWRhFCXBhmsMnur3up3vJsDoqWh4c39PKXgSWwzAzDHNLn /dns4/boot/tcp/{{ .Values.ports.p2p }}"
+            - name: TCE_JAEGER_AGENT
+              value: {{ .Values.otelEndpoint }}
