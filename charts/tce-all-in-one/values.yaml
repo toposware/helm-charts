@@ -9,7 +9,7 @@ ports:
   p2p: 9090
 
 image:
-  repository: ghcr.io/toposware/tce
+  repository: nobody
 
 credentials:
   username: nobody
