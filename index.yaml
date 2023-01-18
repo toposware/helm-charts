@@ -1,9 +1,20 @@
 apiVersion: v1
 entries:
+  tce-all-in-one:
+  - apiVersion: v2
+    appVersion: pr-4
+    created: "2023-01-18T18:21:06.239702965Z"
+    description: A Helm chart for Kubernetes
+    digest: 428ef144025063efd9126683a50f0f114cc92319f5a55b08ebe96406613502af
+    name: tce-all-in-one
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/tce-all-in-one-0.1.0.tgz
+    version: 0.1.0
   topos-observability:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-17T15:22:42.015135194Z"
+    created: "2023-01-18T18:21:06.240016068Z"
     description: Observability stack for Topos
     digest: c2a32c9420dd23875c0b6f90728f1b0e4ad543157b5f3120c73f9790a811b5f7
     name: topos-observability
@@ -11,4 +22,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/topos-observability-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-17T15:22:42.013276286Z"
+generated: "2023-01-18T18:21:06.239262561Z"
