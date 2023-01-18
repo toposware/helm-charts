@@ -18,7 +18,7 @@ spec:
         - name: {{ .Chart.Name }}-pull-secret
       containers:
         - name: peer
-          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: IfNotPresent
           ports:
             - name: p2p
