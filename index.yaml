@@ -3,7 +3,17 @@ entries:
   tce-all-in-one:
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-01-18T20:03:14.489383356Z"
+    created: "2023-01-19T03:03:36.522015344Z"
+    description: A Helm chart for Kubernetes
+    digest: f2e9dd61215c86d6e7e122f68d04f97cd27d38f8c13a721a19bf3c554c9c4fdb
+    name: tce-all-in-one
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/tce-all-in-one-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: pr-4
+    created: "2023-01-19T03:03:36.521750944Z"
     description: A Helm chart for Kubernetes
     digest: 13460d5dcf40308706f9bb8752105ad168bad87722de908a5269362c06d841f7
     name: tce-all-in-one
@@ -13,7 +23,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-01-18T20:03:14.489141752Z"
+    created: "2023-01-19T03:03:36.521479444Z"
     description: A Helm chart for Kubernetes
     digest: 0e6b62f93ad4370b807af91bb4dafd19716423ace177bd41a15868de0af1baef
     name: tce-all-in-one
@@ -23,7 +33,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-01-18T20:03:14.488874147Z"
+    created: "2023-01-19T03:03:36.521208245Z"
     description: A Helm chart for Kubernetes
     digest: f6946b011c30dfacc6d70698082b8ed96cfcae7e4521f6ffd1a8fb7e9bc86bad
     name: tce-all-in-one
@@ -33,7 +43,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-01-18T20:03:14.488589243Z"
+    created: "2023-01-19T03:03:36.520901745Z"
     description: A Helm chart for Kubernetes
     digest: 428ef144025063efd9126683a50f0f114cc92319f5a55b08ebe96406613502af
     name: tce-all-in-one
@@ -44,7 +54,7 @@ entries:
   topos-observability:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-01-18T20:03:14.48961376Z"
+    created: "2023-01-19T03:03:36.522334443Z"
     description: Observability stack for Topos
     digest: c2a32c9420dd23875c0b6f90728f1b0e4ad543157b5f3120c73f9790a811b5f7
     name: topos-observability
@@ -52,4 +62,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/topos-observability-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-18T20:03:14.488133735Z"
+generated: "2023-01-19T03:03:36.520455546Z"
