@@ -29,6 +29,6 @@ spec:
               protocol: TCP
           env:
             - name: TCE_LOCAL_KS
-              value: 1
+              value: "1"
             - name: TCE_JAEGER_AGENT
               value: {{ .Values.otelEndpoint }}
