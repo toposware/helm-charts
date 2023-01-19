@@ -4,7 +4,7 @@
 
 peerReplicas: 5
 
-otelUrl: https://telemetry.nowhere.com
+otelEndpoint: https://telemetry.nowhere.com
 
 ports:
   http: 8080
