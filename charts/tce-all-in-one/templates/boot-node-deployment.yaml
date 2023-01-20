@@ -13,13 +13,16 @@ spec:
     metadata:
       labels:
         app: boot
+        node: boot
     spec:
+      hostname: boot
       imagePullSecrets:
         - name: {{ .Chart.Name }}-pull-secret
       containers:
         - name: boot
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: IfNotPresent
+          args: ["boot", "tce", "run"]
+          imagePullPolicy: Always
           ports:
             - name: p2p
               containerPort: {{ .Values.ports.p2p }}
@@ -27,8 +30,39 @@ spec:
             - name: http
               containerPort: {{ .Values.ports.http }}
               protocol: TCP
+          volumeMounts:
+            - mountPath: /tmp/shared
+              name: shared
           env:
+            - name: RUST_LOG
+              value: info,topos_p2p=debug,topos_tce_node_app=debug,topos_tce_protocols_reliable_broadcast=debug
+            - name: TOOLCHAIN_VERSION
+              value: stable
+            - name: RUST_BACKTRACE
+              value: full
+            - name: TCE_DB_PATH
+              value: /tmp/default-db
+            - name: TCE_API_ADDR
+              value: 0.0.0.0:1340
             - name: TCE_LOCAL_KS
               value: "1"
+            - name: TCE_JAEGER_SERVICE_NAME
+              value: tce-boot-node
             - name: TCE_JAEGER_AGENT
               value: {{ .Values.otelEndpoint }}
+            - name: TCE_ECHO_SAMPLE_SIZE
+              value: "3"
+            - name: TCE_READY_SAMPLE_SIZE
+              value: "3"
+            - name: TCE_DELIVERY_SAMPLE_SIZE
+              value: "3"
+            - name: TCE_ECHO_THRESHOLD
+              value: "3"
+            - name: TCE_READY_THRESHOLD
+              value: "3"
+            - name: TCE_DELIVERY_THRESHOLD
+              value: "3"
+      volumes:
+      - name: shared
+        persistentVolumeClaim:
+          claimName: shared

@@ -6,8 +6,10 @@ peerReplicas: 5
 
 otelEndpoint: https://telemetry.nowhere.com
 
+fileSystemId: 0
+
 ports:
-  http: 8080
+  http: 1340
   p2p: 9090
 
 image:

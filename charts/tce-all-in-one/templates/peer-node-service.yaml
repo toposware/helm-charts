@@ -1,20 +1,23 @@
+{{- range $index, $e := until (int $.Values.peerReplicas) }}
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: peer
+  name: peer-{{ $index }}
   labels:
-    app: peer
+    app: peer-{{ $index }}
 spec:
   type: ClusterIP
   ports:
-    - port: {{ .Values.ports.p2p }}
+    - port: {{ $.Values.ports.p2p }}
       targetPort: p2p
       protocol: TCP
       name: p2p
-    - port: {{ .Values.ports.http }}
+    - port: {{ $.Values.ports.http }}
       targetPort: http
       protocol: TCP
       name: http
   selector:
-    app: peer
+    app: peer-{{ $index }}
   sessionAffinity: ClientIP
+{{- end }}

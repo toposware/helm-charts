@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-spammer
+  labels:
+    app: cert-spammer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cert-spammer
+  template:
+    metadata:
+      labels:
+        app: cert-spammer
+    spec:
+      imagePullSecrets:
+        - name: {{ .Chart.Name }}-pull-secret
+      containers:
+        - name: boot
+          image: ghcr.io/toposware/cert-spammer:feature-update-subnet-id
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /tmp/shared
+              name: shared
+          env:
+            - name: RUST_LOG
+              value: info
+            - name: CERT_PER_SEC
+              value: "1"
+            - name: TARGET_NODES_PATH
+              value: /tmp/shared/peer_nodes.json
+      volumes:
+      - name: shared
+        persistentVolumeClaim:
+          claimName: shared
