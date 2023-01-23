@@ -36,7 +36,8 @@ spec:
           livenessProbe:
             exec:
               command:
-              - topos tce push-peer-list --endpoint http://localhost:1340 --format json /tmp/shared/peer_ids.json
+              - /bin/bash
+              - /tmp/liveness.sh
             initialDelaySeconds: 5
             periodSeconds: 5
           env:
