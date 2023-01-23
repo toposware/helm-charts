@@ -33,6 +33,12 @@ spec:
           volumeMounts:
             - mountPath: /tmp/shared
               name: shared
+          livenessProbe:
+            exec:
+              command:
+              - ./topos tce push-peer-list --endpoint http://localhost:1340 --format json /tmp/shared/peer_ids.json
+            initialDelaySeconds: 5
+            periodSeconds: 5
           env:
             - name: RUST_LOG
               value: info,topos_p2p=debug,topos_tce_node_app=debug,topos_tce_protocols_reliable_broadcast=debug
