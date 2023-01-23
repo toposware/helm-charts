@@ -1,0 +1,5 @@
+# Default values for tce-tmp-storage.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+fileSystemId: 0
