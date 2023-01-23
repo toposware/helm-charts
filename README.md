@@ -4,8 +4,8 @@
 <br />
 <div align="center">
 
-  <img src="./.github/assets/logo.png#gh-light-mode-only" alt="Logo" width="300">
-  <img src="./.github/assets/logo_dark.png#gh-dark-mode-only" alt="Logo" width="300">
+  <img src="./assets/logo.png#gh-light-mode-only" alt="Logo" width="300">
+  <img src="./assets/logo_dark.png#gh-dark-mode-only" alt="Logo" width="300">
 
   <h1>Helm charts</h1>
 
