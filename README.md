@@ -31,6 +31,10 @@ $ helm search repo toposware
 1. Push to `main`
 1. The automation will package and publish the release 🚀
 
+## GitHub token
+The GitHub token needs the following permissions:
+-  Full control of private repositories
+
 ## License
 
 This project is released under the terms of the MIT license.
