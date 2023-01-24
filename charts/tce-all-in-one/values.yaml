@@ -12,7 +12,7 @@ ports:
 
 image:
   repository: nobody
-  tag: pr-4
+  tag: pr-99
 
 credentials:
   username: nobody

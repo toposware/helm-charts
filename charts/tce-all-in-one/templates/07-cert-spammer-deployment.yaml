@@ -17,9 +17,9 @@ spec:
       imagePullSecrets:
         - name: {{ .Chart.Name }}-pull-secret
       containers:
-        - name: boot
+        - name: spam
           image: ghcr.io/toposware/cert-spammer:feature-update-subnet-id
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           volumeMounts:
             - mountPath: /tmp/shared
               name: shared
