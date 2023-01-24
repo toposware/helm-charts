@@ -39,7 +39,7 @@ spec:
             exec:
               command:
               - /bin/bash
-              - /tmp/liveness.sh
+              - /tmp/liveness.sh peer
             initialDelaySeconds: 5
             periodSeconds: 5
           env:
