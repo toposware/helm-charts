@@ -37,9 +37,8 @@ spec:
               name: shared
           livenessProbe:
             exec:
-              command:
-              - /bin/bash
-              - /tmp/liveness.sh peer
+              command: ["/tmp/liveness.sh"]
+              args: ["peer"]
             initialDelaySeconds: 5
             periodSeconds: 5
           env:

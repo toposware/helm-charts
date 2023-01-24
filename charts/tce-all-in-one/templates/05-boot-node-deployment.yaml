@@ -35,9 +35,8 @@ spec:
               name: shared
           livenessProbe:
             exec:
-              command:
-              - /bin/bash
-              - /tmp/liveness.sh boot
+              command: ["/tmp/liveness.sh"]
+              args: ["boot"]
             initialDelaySeconds: 5
             periodSeconds: 5
           env:
