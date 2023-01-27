@@ -14,4 +14,3 @@ elasticSearchHost: elasticsearch.nowhere.com
 
 elasticCredentials:
   user: nobody
-  password: secret
