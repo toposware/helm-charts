@@ -11,6 +11,21 @@ spec:
         endpoint: jaeger-collector.observability:14250
         tls:
           insecure: true
+      elasticsearch/trace:
+        endpoints: [https://quickstart-es-http:9200]
+        traces_index: trace_index
+        user: {{ .Values.elasticCredentials.user }}
+        password: {{ .Values.elasticCredentials.password }}
+        tls:
+          insecure_skip_verify: true
+      elasticsearch/log:
+        endpoints: [https://quickstart-es-http:9200]
+        logs_index: my_log_index
+        user: {{ .Values.elasticCredentials.user }}
+        password: {{ .Values.elasticCredentials.password }}
+        tls:
+          insecure_skip_verify: true
+
     extensions:
       # The health_check extension is mandatory for this chart.
       # Without the health_check extension the collector will fail the readiness and liveliness probes.
@@ -61,6 +76,7 @@ spec:
         logs:
           exporters:
             - logging
+            - elasticsearch/log
           processors:
             - memory_limiter
             - batch
@@ -78,6 +94,7 @@ spec:
         traces:
           exporters:
             - logging
+            - elasticsearch/trace
             - jaeger
           processors:
             - memory_limiter
