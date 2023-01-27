@@ -41,7 +41,7 @@ spec:
                 - /bin/bash
                 - /tmp/liveness.sh
                 - peer
-            initialDelaySeconds: 5
+            initialDelaySeconds: 60
             periodSeconds: 5
           env:
             - name: LOCAL_TEST_NET

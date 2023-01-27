@@ -28,7 +28,7 @@ spec:
               command:
                 - /bin/cat
                 - /tmp/shared/peer_ids.json
-            initialDelaySeconds: 5
+            initialDelaySeconds: 60
             periodSeconds: 5
           env:
             - name: RUST_LOG
