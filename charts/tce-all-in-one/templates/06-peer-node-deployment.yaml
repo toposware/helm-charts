@@ -35,14 +35,6 @@ spec:
           volumeMounts:
             - mountPath: /tmp/shared
               name: shared
-          livenessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - /tmp/liveness.sh
-                - peer
-            initialDelaySeconds: 60
-            periodSeconds: 5
           env:
             - name: LOCAL_TEST_NET
               value: "true"

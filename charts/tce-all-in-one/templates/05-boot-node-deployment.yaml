@@ -33,14 +33,6 @@ spec:
           volumeMounts:
             - mountPath: /tmp/shared
               name: shared
-          livenessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - /tmp/liveness.sh
-                - boot
-            initialDelaySeconds: 30
-            periodSeconds: 5
           env:
             - name: RUST_LOG
               value: info,topos_p2p=debug,topos_tce_node_app=debug,topos_tce_protocols_reliable_broadcast=debug
