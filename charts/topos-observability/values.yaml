@@ -14,3 +14,7 @@ elasticSearchHost: elasticsearch.nowhere.com
 
 elasticCredentials:
   user: nobody
+
+github:
+  sha: "0123456789012345678901234567890123456789"
+  sha_short: "1234567"

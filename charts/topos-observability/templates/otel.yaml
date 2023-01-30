@@ -40,6 +40,16 @@ spec:
         limit_percentage: 50
         spike_limit_percentage: 30
 
+      attributes:
+        actions:
+          - key: sha_short
+            value: {{ .Values.github.shaShort }}
+            action: insert
+
+          - key: sha
+            value: {{ .Values.github.sha }}
+            action: insert
+
     receivers:
       jaeger:
         protocols:
@@ -80,6 +90,7 @@ spec:
           processors:
             - memory_limiter
             - batch
+            - attributes
           receivers:
             - otlp
         metrics:
@@ -88,6 +99,8 @@ spec:
           processors:
             - memory_limiter
             - batch
+            - attributes
+          receivers:
           receivers:
             - otlp
             - prometheus
@@ -99,6 +112,7 @@ spec:
           processors:
             - memory_limiter
             - batch
+            - attributes
           receivers:
             - otlp
             - jaeger
