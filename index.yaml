@@ -3,16 +3,6 @@ entries:
   tce-all-in-one:
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-01-31T17:23:30.955381142Z"
-    description: A Helm chart for Kubernetes
-    digest: 83fd756114135acd415901b07e233d80359bfba6f9d9704069d24dae747f8652
-    name: tce-all-in-one
-    type: application
-    urls:
-    - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/tce-all-in-one-0.1.21.tgz
-    version: 0.1.21
-  - apiVersion: v2
-    appVersion: pr-99
     created: "2023-01-31T17:23:30.954965145Z"
     description: A Helm chart for Kubernetes
     digest: 85c761a7cbf264a81907d9a83241809ab6990b6a3750b8cc9e2033879abb90a0
