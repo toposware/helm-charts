@@ -18,7 +18,7 @@ spec:
         - name: {{ .Chart.Name }}-pull-secret
       containers:
         - name: spam
-          image: ghcr.io/toposware/cert-spammer:chore-update_api_dependencies
+          image: ghcr.io/toposware/cert-spammer:main
           imagePullPolicy: Always
           volumeMounts:
             - mountPath: /tmp/shared
