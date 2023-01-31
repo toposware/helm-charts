@@ -14,14 +14,14 @@ spec:
       elasticsearch/trace:
         endpoints: [https://quickstart-es-http:9200]
         traces_index: trace_index
-        user: {{ .Values.elasticCredentials.user }}
+        user: ${elastic_user}
         password: ${elastic}
         tls:
           insecure_skip_verify: true
       elasticsearch/log:
         endpoints: [https://quickstart-es-http:9200]
         logs_index: my_log_index
-        user: {{ .Values.elasticCredentials.user }}
+        user: ${elastic_user}
         password: ${elastic}
         tls:
           insecure_skip_verify: true
@@ -106,4 +106,6 @@ spec:
   envFrom:
   - secretRef:
       name: quickstart-es-elastic-user
+  - configMapRef:
+      name: elastic-config
 
