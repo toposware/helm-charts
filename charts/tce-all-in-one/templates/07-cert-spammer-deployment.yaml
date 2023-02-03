@@ -33,8 +33,10 @@ spec:
           env:
             - name: RUST_LOG
               value: info
-            - name: CERT_PER_SEC
+            - name: CERT_PER_BATCH
               value: "1"
+            - name: BATCH_TIME_INTERVAL
+              value: "4"
             - name: TARGET_NODES_PATH
               value: /tmp/shared/peer_nodes.json
       volumes:
