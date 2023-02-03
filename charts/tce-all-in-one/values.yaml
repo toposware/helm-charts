@@ -9,6 +9,10 @@ peersHost: peer.nowhere.com
 otelEndpoint: https://telemetry.nowhere.com
 
 ingress: false
+acme:
+  # possible values are staging or production
+  email: nobody@nowhere.com
+  environment: staging
 
 ports:
   http: 1340
