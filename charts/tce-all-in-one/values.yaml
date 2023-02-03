@@ -4,7 +4,11 @@
 
 peerReplicas: 5
 
+bootHost: boot.nowhere.com
+peersHost: peer.nowhere.com
 otelEndpoint: https://telemetry.nowhere.com
+
+ingress: false
 
 ports:
   http: 1340

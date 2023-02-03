@@ -21,3 +21,24 @@ spec:
     app: peer-{{ $index }}
   sessionAffinity: ClientIP
 {{- end }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: peers
+  labels:
+    app: peers
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ $.Values.ports.p2p }}
+      targetPort: p2p
+      protocol: TCP
+      name: p2p
+    - port: {{ $.Values.ports.http }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    node: peer
+  sessionAffinity: ClientIP

@@ -1,0 +1,26 @@
+{{ if .Values.ingress }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: boot
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.bootHost }}
+    secretName: "{{ .Values.bootHost }}-secret-tls"
+  rules:
+    - host: {{ .Values.bootHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: peers
+                port:
+                  number: 1340
+            path: /
+            pathType: Prefix
+{{ end }}
