@@ -1,0 +1,73 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: elk
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-production"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.kibanaHost }}
+    secretName: "{{ .Values.kibanaHost }}-secret-tls"
+  rules:
+    - host: {{ .Values.kibanaHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: quickstart-kb-http
+                port:
+                  number: 5601
+            path: /
+            pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: otel
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.otelHost }}
+    secretName: "{{ .Values.otelHost }}-secret-tls"
+  rules:
+    - host: {{ .Values.otelHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: otel-collector-opentelemetry-collector
+                port:
+                  number: 4317
+            path: /
+            pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jaeger
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.jaegerHost }}
+    secretName: "{{ .Values.jaegerHost }}-secret-tls"
+  rules:
+    - host: {{ .Values.jaegerHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: jaeger-query
+                port:
+                  number: 16686
+            path: /
+            pathType: Prefix
