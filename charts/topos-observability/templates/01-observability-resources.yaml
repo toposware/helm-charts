@@ -13,7 +13,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: jaeger-default-config
-type: kubernetes.io/basic-auth
+type: Opaque
 stringData:
   ES_USERNAME: elastic
   ES_PASSWORD: {{ $elasticPassword }}
