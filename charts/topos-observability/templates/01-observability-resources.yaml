@@ -164,6 +164,8 @@ spec:
       es:
         server-urls: https://quickstart-es-http:9200
         index-prefix: jaeger_traces
+        version: 7 # Necessary as it doesn't work with 8 yet
+        create-index-templates: false # Necessary as it doesn't work with 8 yet
         tls:
           ca: /es/certificates/ca.crt
     secretName: jaeger-default-config
