@@ -3,7 +3,7 @@ kind: OpenTelemetryCollector
 metadata:
   name: otel-collector-opentelemetry
 spec:
-  mode: deployment # This configuration is omittable.
+  mode: daemonset
   config: |
     exporters:
       logging: {}
