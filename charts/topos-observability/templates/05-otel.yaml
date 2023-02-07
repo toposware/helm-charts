@@ -14,15 +14,15 @@ spec:
       elasticsearch/trace:
         endpoints: [https://quickstart-es-http:9200]
         traces_index: trace_index
-        user: ${elastic_user}
-        password: ${elastic}
+        user: ${ES_USERNAME}
+        password: ${ES_PASSWORD}
         tls:
           insecure_skip_verify: true
       elasticsearch/log:
         endpoints: [https://quickstart-es-http:9200]
         logs_index: my_log_index
-        user: ${elastic_user}
-        password: ${elastic}
+        user: ${ES_USERNAME}
+        password: ${ES_PASSWORD}
         tls:
           insecure_skip_verify: true
 
@@ -105,7 +105,4 @@ spec:
             - zipkin
   envFrom:
   - secretRef:
-      name: quickstart-es-elastic-user
-  - configMapRef:
       name: elastic-config
-
