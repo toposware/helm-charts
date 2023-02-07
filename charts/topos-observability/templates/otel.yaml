@@ -76,7 +76,7 @@ spec:
         logs:
           exporters:
             - logging
-            # - elasticsearch/log
+            - elasticsearch/log
           processors:
             - memory_limiter
             - batch
@@ -94,7 +94,7 @@ spec:
         traces:
           exporters:
             - logging
-            # - elasticsearch/trace
+            - elasticsearch/trace
             - jaeger
           processors:
             - memory_limiter

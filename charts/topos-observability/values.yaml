@@ -10,4 +10,3 @@ environment: staging
 jaegerHost: jaeger.nowhere.com
 otelHost: otel.nowhere.com
 kibanaHost: kibana.nowhere.com
-elasticSearchHost: elasticsearch.nowhere.com

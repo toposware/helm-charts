@@ -9,21 +9,9 @@ metadata:
 spec:
   tls:
   - hosts:
-    - {{ .Values.elasticSearchHost }}
     - {{ .Values.kibanaHost }}
-    secretName: "{{ .Values.elasticSearchHost }}-secret-tls"
+    secretName: "{{ .Values.kibanaHost }}-secret-tls"
   rules:
-    - host: {{ .Values.elasticSearchHost }}
-      http:
-        paths:
-          - backend:
-              service:
-                name: quickstart-es-http
-                port:
-                  number: 9200
-            path: /
-            pathType: Prefix
-
     - host: {{ .Values.kibanaHost }}
       http:
         paths:
