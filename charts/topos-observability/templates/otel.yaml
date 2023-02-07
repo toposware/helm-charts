@@ -11,20 +11,20 @@ spec:
         endpoint: jaeger-collector.observability:14250
         tls:
           insecure: true
-      elasticsearch/trace:
-        endpoints: [https://quickstart-es-http:9200]
-        traces_index: trace_index
-        user: ${elastic_user}
-        password: ${elastic}
-        tls:
-          insecure_skip_verify: true
-      elasticsearch/log:
-        endpoints: [https://quickstart-es-http:9200]
-        logs_index: my_log_index
-        user: ${elastic_user}
-        password: ${elastic}
-        tls:
-          insecure_skip_verify: true
+      # elasticsearch/trace:
+      #   endpoints: [https://quickstart-es-http:9200]
+      #   traces_index: trace_index
+      #   user: ${elastic_user}
+      #   password: ${elastic}
+      #   tls:
+      #     insecure_skip_verify: true
+      # elasticsearch/log:
+      #   endpoints: [https://quickstart-es-http:9200]
+      #   logs_index: my_log_index
+      #   user: ${elastic_user}
+      #   password: ${elastic}
+      #   tls:
+      #     insecure_skip_verify: true
 
     extensions:
       # The health_check extension is mandatory for this chart.
@@ -76,7 +76,7 @@ spec:
         logs:
           exporters:
             - logging
-            - elasticsearch/log
+            # - elasticsearch/log
           processors:
             - memory_limiter
             - batch
@@ -94,7 +94,7 @@ spec:
         traces:
           exporters:
             - logging
-            - elasticsearch/trace
+            # - elasticsearch/trace
             - jaeger
           processors:
             - memory_limiter
@@ -103,9 +103,9 @@ spec:
             - otlp
             - jaeger
             - zipkin
-  envFrom:
-  - secretRef:
-      name: quickstart-es-elastic-user
-  - configMapRef:
-      name: elastic-config
+  # envFrom:
+  # - secretRef:
+  #     name: quickstart-es-elastic-user
+  # - configMapRef:
+  #     name: elastic-config
 

@@ -2,3 +2,17 @@ apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
   name: jaeger
+spec:
+  strategy: production
+  storage:
+    type: elasticsearch
+    options:
+      es:
+        server-urls: http://quickstart-es-http:9200
+        username: ${elastic_user}
+        password: ${elastic}
+  envFrom:
+  - secretRef:
+      name: quickstart-es-elastic-user
+  - configMapRef:
+      name: elastic-config
