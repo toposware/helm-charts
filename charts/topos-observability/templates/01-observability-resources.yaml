@@ -79,7 +79,10 @@ spec:
       health_check: {}
       memory_ballast: {}
     processors:
-      batch: {}
+      batch:
+        timeout: 10s
+        send_batch_size: 10000
+        send_batch_max_size: 11000
       # If set to null, will be overridden with values based on k8s resource limits
       memory_limiter:
         check_interval: 1s
