@@ -23,13 +23,12 @@ spec:
           volumeMounts:
             - mountPath: /tmp/shared
               name: shared
-          livenessProbe:
+          startupProbe:
             exec:
               command:
                 - /bin/cat
                 - /tmp/shared/peer_ids.json
-            initialDelaySeconds: 60
-            periodSeconds: 5
+            initialDelaySeconds: 90
           env:
             - name: RUST_LOG
               value: info
