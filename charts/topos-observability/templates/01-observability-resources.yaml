@@ -9,15 +9,6 @@ stringData:
   password: {{ $elasticPassword }}
   roles: superuser
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: jaeger-default-config
-type: Opaque
-stringData:
-  ES_USERNAME: elastic
-  ES_PASSWORD: {{ $elasticPassword }}
----
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -40,7 +31,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 20Gi
+            storage: 10Gi
         storageClassName: gp2
 ---
 apiVersion: kibana.k8s.elastic.co/v1
@@ -167,23 +158,9 @@ kind: Jaeger
 metadata:
   name: jaeger
 spec:
-  strategy: production
-  storage:
-    type: elasticsearch
-    options:
-      es:
-        server-urls: https://quickstart-es-http:9200
-        index-prefix: jaeger_traces
-        version: 7 # Necessary as it doesn't work with 8 yet
-        create-index-templates: false # Necessary as it doesn't work with 8 yet
-        tls:
-          ca: /es/certificates/ca.crt
-    secretName: jaeger-default-config
-  volumeMounts:
-    - name: certificates
-      mountPath: /es/certificates/
-      readOnly: true
-  volumes:
-    - name: certificates
-      secret:
-        secretName: quickstart-es-http-certs-public
+  collector:
+    maxReplicas: 2
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
