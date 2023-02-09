@@ -1,3 +1,4 @@
+{{ if .Values.ingress }}
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -12,7 +13,9 @@ spec:
     - http01:
         ingress:
           class: nginx
+{{ end }}
 ---
+{{ if .Values.ingress }}
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -27,3 +30,4 @@ spec:
     - http01:
         ingress:
           class: nginx
+{{ end }}
