@@ -8,10 +8,15 @@ bootHost: boot.nowhere.com
 peersHost: peer.nowhere.com
 otelEndpoint: https://telemetry.nowhere.com
 
+# deploy cert-spammer (true | false)
+certSpammer: true
+
+# create ingress (true | false)
 ingress: false
+
 acme:
-  # possible values are staging or production
   email: nobody@nowhere.com
+  # acme issuer type (staging | production)
   environment: staging
 
 ports:
