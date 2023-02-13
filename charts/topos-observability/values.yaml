@@ -7,6 +7,5 @@ acme:
 
 # possible values are staging or production
 environment: staging
-jaegerHost: jaeger.nowhere.com
 otelHost: otel.nowhere.com
 kibanaHost: kibana.nowhere.com
