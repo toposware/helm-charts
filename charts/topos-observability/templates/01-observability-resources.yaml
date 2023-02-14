@@ -1,13 +1,13 @@
-{{- $elasticPassword := randAlphaNum 16 -}}
+{{- $fakePassword := randAlphaNum 16 -}}
 apiVersion: v1
 kind: Secret
 metadata:
   name: elastic-default-config
 type: kubernetes.io/basic-auth
 stringData:
-  username: elastic
-  password: {{ $elasticPassword }}
-  roles: superuser
+  username: fake
+  password: {{ $fakePassword }}
+  roles: viewer
 ---
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
@@ -21,8 +21,6 @@ spec:
   nodeSets:
   - name: default
     count: 2
-    config:
-      node.store.allow_mmap: false
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
@@ -56,15 +54,15 @@ spec:
       elasticsearch/trace:
         endpoints: [https://quickstart-es-http:9200]
         traces_index: trace_index
-        user: ${username}
-        password: ${password}
+        user: elastic
+        password: ${elastic}
         tls:
           insecure_skip_verify: true
       elasticsearch/log:
         endpoints: [https://quickstart-es-http:9200]
         logs_index: my_log_index
-        user: ${username}
-        password: ${password}
+        user: elastic
+        password: ${elastic}
         tls:
           insecure_skip_verify: true
 
@@ -141,4 +139,4 @@ spec:
             - zipkin
   envFrom:
   - secretRef:
-      name: elastic-default-config
+      name: quickstart-es-elastic-user
