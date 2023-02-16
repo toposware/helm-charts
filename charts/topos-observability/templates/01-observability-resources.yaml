@@ -1,13 +1,22 @@
-{{- $fakePassword := randAlphaNum 16 -}}
 apiVersion: v1
 kind: Secret
 metadata:
-  name: elastic-default-config
+  name: viewer-config
 type: kubernetes.io/basic-auth
 stringData:
-  username: fake
-  password: {{ $fakePassword }}
+  username: viewer
+  password: {{ randAlphaNum 16 }}
   roles: viewer
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: editor-config
+type: kubernetes.io/basic-auth
+stringData:
+  username: editor
+  password: {{ randAlphaNum 16 }}
+  roles: editor
 ---
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
@@ -17,7 +26,8 @@ spec:
   version: 8.6.0
   auth:
     fileRealm:
-    - secretName: elastic-default-config
+    - secretName: viewer-config
+    - secretName: editor-config
   nodeSets:
   - name: default
     count: 2
