@@ -52,6 +52,17 @@ spec:
   elasticsearchRef:
     name: quickstart
 ---
+apiVersion: apm.k8s.elastic.co/v1
+kind: ApmServer
+metadata:
+  name: quickstart
+  namespace: default
+spec:
+  version: 8.6.0
+  count: 1
+  elasticsearchRef:
+    name: quickstart
+---
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
@@ -61,18 +72,11 @@ spec:
   config: |
     exporters:
       logging: {}
-      elasticsearch/trace:
-        endpoints: [https://quickstart-es-http:9200]
-        traces_index: trace_index
-        user: elastic
-        password: ${elastic}
-        tls:
-          insecure_skip_verify: true
-      elasticsearch/log:
-        endpoints: [https://quickstart-es-http:9200]
-        logs_index: my_log_index
-        user: elastic
-        password: ${elastic}
+      otlp/elastic:
+        endpoint: "quickstart-apm-http:8200"
+        headers:
+          # Elastic APM Server secret token
+          Authorization: "Bearer ${secret-token}"
         tls:
           insecure_skip_verify: true
 
@@ -122,7 +126,7 @@ spec:
         logs:
           exporters:
             - logging
-            - elasticsearch/log
+            - otlp/elastic
           processors:
             - memory_limiter
             - batch
@@ -140,7 +144,7 @@ spec:
         traces:
           exporters:
             - logging
-            - elasticsearch/trace
+            - otlp/elastic
           processors:
             - memory_limiter
             - batch
@@ -149,4 +153,4 @@ spec:
             - zipkin
   envFrom:
   - secretRef:
-      name: quickstart-es-elastic-user
+      name: quickstart-apm-token
