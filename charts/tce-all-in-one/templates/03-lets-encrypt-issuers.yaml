@@ -1,3 +1,5 @@
+{{- $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-staging" -}}
+{{- if not $issuer -}}
 {{ if .Values.ingress }}
 apiVersion: cert-manager.io/v1
 kind: Issuer
@@ -14,7 +16,10 @@ spec:
         ingress:
           class: nginx
 {{ end }}
+{{- end -}}
 ---
+{{- $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-staging" -}}
+{{- if not $issuer -}}
 {{ if .Values.ingress }}
 apiVersion: cert-manager.io/v1
 kind: Issuer
@@ -31,3 +36,4 @@ spec:
         ingress:
           class: nginx
 {{ end }}
+{{- end -}}

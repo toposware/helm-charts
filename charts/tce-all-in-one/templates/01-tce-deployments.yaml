@@ -1,128 +1,48 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ .Chart.Name }}-pull-secret
+  name: {{ .Values.mode }}-pull-secret
 type: kubernetes.io/dockerconfigjson
 data:
   .dockerconfigjson: {{ template "imagePullSecret" . }}
 ---
+{{- range $index, $e := until (int $.Values.replicas) }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: boot
+  name: {{ $.Values.mode }}-{{ $index }}
   labels:
-    app: boot
+    app: {{ $.Values.mode }}-{{ $index }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: boot
+      app: {{ $.Values.mode }}-{{ $index }}
   template:
     metadata:
       labels:
-        app: boot
-        node: boot
+        app: {{ $.Values.mode }}-{{ $index }}
+        node: {{ $.Values.mode }}
     spec:
-      hostname: boot
+      hostname: {{ $.Values.mode }}-{{ $index }}
       imagePullSecrets:
-        - name: {{ .Chart.Name }}-pull-secret
+        - name: {{ $.Values.mode }}-pull-secret
       containers:
-        - name: boot
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          args: ["boot", "tce", "run"]
-          imagePullPolicy: Always
-          ports:
-            - name: p2p
-              containerPort: {{ .Values.ports.p2p }}
-              protocol: TCP
-            - name: http
-              containerPort: {{ .Values.ports.http }}
-              protocol: TCP
-          volumeMounts:
-            - mountPath: /tmp/shared
-              name: shared
-          startupProbe:
-            exec:
-              command: ["cat", "/tmp/shared/peer_nodes.json"]
-          livenessProbe:
-            exec:
-              command: ["/tmp/liveness.sh", "boot"]
-            initialDelaySeconds: 60
-            periodSeconds: 5
-          readinessProbe:
-            exec:
-              command: ["cat", "/tmp/shared/peer_nodes.json"]
-          env:
-            - name: RUST_LOG
-              value: info,topos_p2p=debug,topos_tce_node_app=debug,topos_tce_protocols_reliable_broadcast=debug
-            - name: TOOLCHAIN_VERSION
-              value: stable
-            - name: RUST_BACKTRACE
-              value: full
-            - name: TCE_DB_PATH
-              value: /tmp/default-db
-            - name: TCE_API_ADDR
-              value: 0.0.0.0:1340
-            - name: TCE_LOCAL_KS
-              value: "1"
-            - name: TCE_JAEGER_SERVICE_NAME
-              value: tce-boot-node
-            - name: TCE_JAEGER_AGENT
-              value: {{ .Values.otelEndpoint }}
-            - name: TCE_ECHO_SAMPLE_SIZE
-              value: "3"
-            - name: TCE_READY_SAMPLE_SIZE
-              value: "3"
-            - name: TCE_DELIVERY_SAMPLE_SIZE
-              value: "3"
-            - name: TCE_ECHO_THRESHOLD
-              value: "3"
-            - name: TCE_READY_THRESHOLD
-              value: "3"
-            - name: TCE_DELIVERY_THRESHOLD
-              value: "3"
-      volumes:
-      - name: shared
-        persistentVolumeClaim:
-          claimName: shared
-{{- range $index, $e := until (int $.Values.peerReplicas) }}
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: peer-{{ $index }}
-  labels:
-    app: peer-{{ $index }}
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: peer-{{ $index }}
-  template:
-    metadata:
-      labels:
-        app: peer-{{ $index }}
-        node: peer
-    spec:
-      hostname: peer-{{ $index }}
-      imagePullSecrets:
-        - name: {{ $.Chart.Name }}-pull-secret
-      containers:
-        - name: peer
+        - name: {{ $.Values.mode }}
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
-          args: ["tce", "run"]
+          args: {{ $.Values.args }}
           imagePullPolicy: Always
-          startupProbe:
-            exec:
-              command: ["cat", "/tmp/shared/peer_nodes.json"]
-          livenessProbe:
-            exec:
-              command: ["/tmp/liveness.sh", "peer"]
-            initialDelaySeconds: 300
-            periodSeconds: 5
+          {{ if eq $.Values.mode "boot" }}
           readinessProbe:
             exec:
               command: ["cat", "/tmp/shared/peer_nodes.json"]
+          args: ["boot", "tce", "run"]
+          {{ else }}
+          startupProbe:
+            exec:
+              command: ["cat", "/tmp/shared/peer_nodes.json"]
+          args: ["tce", "run"]
+          {{ end }}
           ports:
             - name: p2p
               containerPort: {{ $.Values.ports.p2p }}
@@ -134,34 +54,39 @@ spec:
             - mountPath: /tmp/shared
               name: shared
           env:
+            - name: TCE_LOCAL_KS
+              value: "{{ $.Values.env.TCE_LOCAL_KS }}"
             - name: LOCAL_TEST_NET
-              value: "true"
+              value: "{{ $.Values.env.LOCAL_TEST_NET }}"
+            - name: TOOLCHAIN_VERSION
+              value: "{{ $.Values.env.TOOLCHAIN_VERSION }}"
             - name: RUST_LOG
-              value: info,topos_p2p=debug,topos_tce_node_app=debug,topos_tce_protocols_reliable_broadcast=debug
+              value: "{{ $.Values.env.RUST_LOG }}"
+            - name: RUST_BACKTRACE
+              value: "{{ $.Values.env.RUST_BACKTRACE }}"
             - name: TCE_DB_PATH
-              value: /tmp/default-db
+              value: "{{ $.Values.env.TCE_DB_PATH }}"
             - name: TCE_API_ADDR
-              value: 0.0.0.0:1340
+              value: "{{ $.Values.env.TCE_API_ADDR }}"
             - name: TCE_JAEGER_SERVICE_NAME
-              value: tce-regular-node
+              value: "{{ $.Values.env.TCE_JAEGER_SERVICE_NAME }}"
             - name: TCE_JAEGER_AGENT
-              value: {{ $.Values.otelEndpoint }}
-            - name: TCE_BOOT_PEERS
-              value: "12D3KooWRhFCXBhmsMnur3up3vJsDoqWh4c39PKXgSWwzAzDHNLn /dns4/boot/tcp/{{ $.Values.ports.p2p }}"
+              value: "{{ $.Values.env.TCE_JAEGER_AGENT }}"
             - name: TCE_ECHO_SAMPLE_SIZE
-              value: "3"
+              value: "{{ $.Values.env.TCE_ECHO_SAMPLE_SIZE }}"
             - name: TCE_READY_SAMPLE_SIZE
-              value: "3"
+              value: "{{ $.Values.env.TCE_READY_SAMPLE_SIZE }}"
             - name: TCE_DELIVERY_SAMPLE_SIZE
-              value: "3"
+              value: "{{ $.Values.env.TCE_DELIVERY_SAMPLE_SIZE }}"
             - name: TCE_ECHO_THRESHOLD
-              value: "3"
+              value: "{{ $.Values.env.TCE_ECHO_THRESHOLD }}"
             - name: TCE_READY_THRESHOLD
-              value: "3"
+              value: "{{ $.Values.env.TCE_READY_THRESHOLD }}"
             - name: TCE_DELIVERY_THRESHOLD
-              value: "3"
+              value: "{{ $.Values.env.TCE_DELIVERY_THRESHOLD }}"
       volumes:
       - name: shared
         persistentVolumeClaim:
           claimName: shared
+---
 {{- end }}

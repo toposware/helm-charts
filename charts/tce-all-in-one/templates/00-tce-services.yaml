@@ -1,11 +1,11 @@
-{{- range $index, $e := until (int $.Values.peerReplicas) }}
+{{- range $index, $e := until (int $.Values.replicas) }}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: peer-{{ $index }}
+  name: {{ $.Values.mode }}-{{ $index }}
   labels:
-    app: peer-{{ $index }}
+    app: {{ $.Values.mode }}-{{ $index }}
 spec:
   type: ClusterIP
   ports:
@@ -18,16 +18,16 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: peer-{{ $index }}
+    app: {{ $.Values.mode }}-{{ $index }}
   sessionAffinity: ClientIP
 {{- end }}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: peers
+  name: {{ $.Values.mode }}
   labels:
-    app: peers
+    app: {{ $.Values.mode }}
 spec:
   type: ClusterIP
   ports:
@@ -40,26 +40,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    node: peer
-  sessionAffinity: ClientIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: boot
-  labels:
-    app: boot
-spec:
-  type: ClusterIP
-  ports:
-    - port: {{ .Values.ports.p2p }}
-      targetPort: p2p
-      protocol: TCP
-      name: p2p
-    - port: {{ .Values.ports.http }}
-      targetPort: http
-      protocol: TCP
-      name: http
-  selector:
-    app: boot
+    node: {{ $.Values.mode }}
   sessionAffinity: ClientIP

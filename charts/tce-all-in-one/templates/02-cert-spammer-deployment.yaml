@@ -16,7 +16,7 @@ spec:
         app: cert-spammer
     spec:
       imagePullSecrets:
-        - name: {{ .Chart.Name }}-pull-secret
+        - name: {{ .Values.mode }}-pull-secret
       containers:
         - name: spam
           image: ghcr.io/toposware/cert-spammer:main
