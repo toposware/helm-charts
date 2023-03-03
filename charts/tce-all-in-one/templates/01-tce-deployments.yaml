@@ -15,6 +15,8 @@ metadata:
     app: {{ $.Values.mode }}-{{ $index }}
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: {{ $.Values.mode }}-{{ $index }}
