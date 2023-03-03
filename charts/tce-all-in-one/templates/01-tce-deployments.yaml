@@ -29,6 +29,15 @@ spec:
       hostname: {{ $.Values.mode }}-{{ $index }}
       imagePullSecrets:
         - name: {{ $.Values.mode }}-pull-secret
+      {{ if eq $.Values.mode "boot" }}
+      initContainers:
+        - name: init-myservice
+          image: busybox:1.28
+          command: ["sh", "-c", "rm /tmp/shared/peer_nodes.json /tmp/shared/peer_ids.json /tmp/shared/boot_peers.json || exit 0"]
+          volumeMounts:
+            - mountPath: /tmp/shared
+              name: shared
+      {{ end }}
       containers:
         - name: {{ $.Values.mode }}
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
