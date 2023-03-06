@@ -17,7 +17,7 @@ spec:
           class: nginx
 {{- end -}}
 ---
-{{- $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-staging" -}}
+{{- $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-production" -}}
 {{- if not $issuer -}}
 apiVersion: cert-manager.io/v1
 kind: Issuer
@@ -33,5 +33,5 @@ spec:
     - http01:
         ingress:
           class: nginx
-{{ end }}
 {{- end -}}
+{{ end }}
