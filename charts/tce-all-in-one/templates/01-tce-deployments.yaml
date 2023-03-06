@@ -43,6 +43,7 @@ spec:
           startupProbe:
             exec:
               command: ["liveness.sh", "peer"]
+            initialDelaySeconds: 60
           args: ["tce", "run"]
           {{ end }}
           ports:
