@@ -1,6 +1,6 @@
 {{ if .Values.ingress }}
-{{- $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-staging" -}}
-{{- if not $issuer -}}
+{{ $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-staging" }}
+{{ if not $issuer }}
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -8,17 +8,17 @@ metadata:
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: {{ .Values.acme.email }}
+    email: {{ $.Values.acme.email }}
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
     - http01:
         ingress:
           class: nginx
-{{- end -}}
+{{ end }}
 ---
-{{- $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-production" -}}
-{{- if not $issuer -}}
+{{ $issuer := lookup "cert-manager.io/v1" "Issuer" .Release.Namespace "letsencrypt-production" }}
+{{ if not $issuer }}
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -26,12 +26,12 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: {{ .Values.acme.email }}
+    email: {{ $.Values.acme.email }}
     privateKeySecretRef:
       name: letsencrypt-production
     solvers:
     - http01:
         ingress:
           class: nginx
-{{- end -}}
+{{ end }}
 {{ end }}
