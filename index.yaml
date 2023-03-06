@@ -3,9 +3,19 @@ entries:
   tce-all-in-one:
   - apiVersion: v2
     appVersion: main
-    created: "2023-03-06T18:33:14.164995113Z"
+    created: "2023-03-06T18:50:06.336913661Z"
     description: A Helm chart for TCE
-    digest: 7fa22ca9dbeeee8aaae0261732dc74ac7146bb56c6b0f6d3d67b58a3ed8cf590
+    digest: 0898727504bf75bb381b51dbc6ebfb5775a3bc88e71ceaf80673335a1d1e320b
+    name: tce-all-in-one
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/tce-all-in-one-0.1.30.tgz
+    version: 0.1.30
+  - apiVersion: v2
+    appVersion: main
+    created: "2023-03-06T18:50:06.336287549Z"
+    description: A Helm chart for TCE
+    digest: 92bf0c94b3495f1acaa001289446048fa6de3ada7afffd45cba2aa1e915a75ec
     name: tce-all-in-one
     type: application
     urls:
@@ -13,7 +23,7 @@ entries:
     version: 0.1.29
   - apiVersion: v2
     appVersion: main
-    created: "2023-03-06T18:33:14.164607414Z"
+    created: "2023-03-06T18:50:06.335887042Z"
     description: A Helm chart for TCE
     digest: 9f6820f8442031954d9801a4cd66e205b6e9db6307175c5427832c434bd84085
     name: tce-all-in-one
@@ -23,7 +33,7 @@ entries:
     version: 0.1.28
   - apiVersion: v2
     appVersion: main
-    created: "2023-03-06T18:33:14.164182515Z"
+    created: "2023-03-06T18:50:06.335502535Z"
     description: A Helm chart for TCE
     digest: 30ea49bf50a9cf1991a8f190fa9b9fc43cc35c0b1e6e866fcafe0ab2920b3009
     name: tce-all-in-one
@@ -33,7 +43,7 @@ entries:
     version: 0.1.27
   - apiVersion: v2
     appVersion: main
-    created: "2023-03-06T18:33:14.163784516Z"
+    created: "2023-03-06T18:50:06.335070027Z"
     description: A Helm chart for TCE
     digest: 76777f3ea8f0835d1ccf10b1d519e906048e3f29972728956e8dd579591590e6
     name: tce-all-in-one
@@ -43,7 +53,7 @@ entries:
     version: 0.1.26
   - apiVersion: v2
     appVersion: main
-    created: "2023-03-06T18:33:14.163385417Z"
+    created: "2023-03-06T18:50:06.334645919Z"
     description: A Helm chart for TCE
     digest: 80a6a89dda927ef8cec954cd13539f25b0d84748f116407d815f6853832f1442
     name: tce-all-in-one
@@ -53,7 +63,7 @@ entries:
     version: 0.1.25
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.162982718Z"
+    created: "2023-03-06T18:50:06.334266812Z"
     description: A Helm chart for TCE
     digest: 982dfb546293de85467296d9f0369e80150816b75e581fd1173dd0a560417541
     name: tce-all-in-one
@@ -63,7 +73,7 @@ entries:
     version: 0.1.24
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.162618819Z"
+    created: "2023-03-06T18:50:06.333952406Z"
     description: A Helm chart for TCE
     digest: 3fd0bc792eaea278c6371a22c2e9a6aae6fa11e3c8f6cc2fdf15fd7299b55a38
     name: tce-all-in-one
@@ -73,7 +83,7 @@ entries:
     version: 0.1.23
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.162293619Z"
+    created: "2023-03-06T18:50:06.333644801Z"
     description: A Helm chart for TCE
     digest: fd7d044ba1126d7fc195aeda05dc1d9dfdef43c3602e9ceef3e89330b352025f
     name: tce-all-in-one
@@ -83,7 +93,7 @@ entries:
     version: 0.1.22
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.161631521Z"
+    created: "2023-03-06T18:50:06.333017289Z"
     description: A Helm chart for TCE
     digest: 96443d5607208d17fc678703d1f7216300556cbfb202ecbcae6147f651966e67
     name: tce-all-in-one
@@ -93,7 +103,7 @@ entries:
     version: 0.1.22-rc.3
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.161233922Z"
+    created: "2023-03-06T18:50:06.332564481Z"
     description: A Helm chart for TCE
     digest: 71b09bd9726cf2e19b35463f39b4d93e912b09af61a870e1cfca746075f6ecee
     name: tce-all-in-one
@@ -103,7 +113,7 @@ entries:
     version: 0.1.22-rc.2
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.160614123Z"
+    created: "2023-03-06T18:50:06.332077372Z"
     description: A Helm chart for TCE
     digest: a7919ccfba629a1f38be52e0fafceb806c6483804a5df0a67403043ddba363e7
     name: tce-all-in-one
@@ -113,7 +123,7 @@ entries:
     version: 0.1.22-rc.1
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.16196252Z"
+    created: "2023-03-06T18:50:06.333332195Z"
     description: A Helm chart for TCE
     digest: ccc2a9c8a4b22ef0fa222d558eb00162ee93707cddda7691d69083be6288ad99
     name: tce-all-in-one
@@ -123,7 +133,7 @@ entries:
     version: 0.1.22-rc
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.160205124Z"
+    created: "2023-03-06T18:50:06.331590663Z"
     description: A Helm chart for TCE
     digest: 1312bbbc03c4c6b2a7c6a366c10357baac4def297a28f91245eae6f39f726873
     name: tce-all-in-one
@@ -133,7 +143,7 @@ entries:
     version: 0.1.21
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.159853225Z"
+    created: "2023-03-06T18:50:06.331162656Z"
     description: A Helm chart for Kubernetes
     digest: 85c761a7cbf264a81907d9a83241809ab6990b6a3750b8cc9e2033879abb90a0
     name: tce-all-in-one
@@ -143,7 +153,7 @@ entries:
     version: 0.1.20
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.159170327Z"
+    created: "2023-03-06T18:50:06.330479443Z"
     description: A Helm chart for Kubernetes
     digest: 51edec26335a23a6f730152cfa3f5e7d9dd737c1b3509436e83f33686a4e887b
     name: tce-all-in-one
@@ -153,7 +163,7 @@ entries:
     version: 0.1.19
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.158766228Z"
+    created: "2023-03-06T18:50:06.32975973Z"
     description: A Helm chart for Kubernetes
     digest: 2188c02a95a3af43d80ac11e5472fa56a453ed456c2560b1c8cc9cf092aee14c
     name: tce-all-in-one
@@ -163,7 +173,7 @@ entries:
     version: 0.1.18
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.158152429Z"
+    created: "2023-03-06T18:50:06.328947915Z"
     description: A Helm chart for Kubernetes
     digest: c88bc018bee4b8029ea9b06ca2f9338b846aa1fbe2b6d2dc8768f704824070d6
     name: tce-all-in-one
@@ -173,7 +183,7 @@ entries:
     version: 0.1.17
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.15789793Z"
+    created: "2023-03-06T18:50:06.32868311Z"
     description: A Helm chart for Kubernetes
     digest: 695500c76e4aa4bde513bf6ba4167a8d5bd270b230e00f3fb9bc88e83e616f00
     name: tce-all-in-one
@@ -183,7 +193,7 @@ entries:
     version: 0.1.16
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.15762413Z"
+    created: "2023-03-06T18:50:06.328353204Z"
     description: A Helm chart for Kubernetes
     digest: 40925cf78bf489ee7ef7d3426fa555c7d6fd3552e32cb41e20a71b8bfd53795b
     name: tce-all-in-one
@@ -193,7 +203,7 @@ entries:
     version: 0.1.15
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.156871932Z"
+    created: "2023-03-06T18:50:06.328063699Z"
     description: A Helm chart for Kubernetes
     digest: 727ec94a977920cf5ef60982ebb67f5aa81d4167758e6ce817cf6a7c8b7be1e9
     name: tce-all-in-one
@@ -203,7 +213,7 @@ entries:
     version: 0.1.14
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.156536233Z"
+    created: "2023-03-06T18:50:06.327756993Z"
     description: A Helm chart for Kubernetes
     digest: 498c9b69a4eefbf22a5917f775ab02d53d085e4d28550864167e49e1428dd572
     name: tce-all-in-one
@@ -213,7 +223,7 @@ entries:
     version: 0.1.13
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.156211534Z"
+    created: "2023-03-06T18:50:06.327453488Z"
     description: A Helm chart for Kubernetes
     digest: 1f63d61d27e766ce9d08d17859ff1cd7028811950d015aaf2ff3c813e569d26b
     name: tce-all-in-one
@@ -223,7 +233,7 @@ entries:
     version: 0.1.12
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.155949834Z"
+    created: "2023-03-06T18:50:06.327190083Z"
     description: A Helm chart for Kubernetes
     digest: 62228647930209a9637081dafea30aa0d28c822c06003b766a42ad234b01ccd2
     name: tce-all-in-one
@@ -233,7 +243,7 @@ entries:
     version: 0.1.11
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.155668435Z"
+    created: "2023-03-06T18:50:06.326918578Z"
     description: A Helm chart for Kubernetes
     digest: c5eb2cbbfaf2f6c11a7d38dba538440874679b8fa6e4a168cc588c3f3f2d2a61
     name: tce-all-in-one
@@ -243,7 +253,7 @@ entries:
     version: 0.1.10
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.167071908Z"
+    created: "2023-03-06T18:50:06.338558491Z"
     description: A Helm chart for Kubernetes
     digest: b58e3d9ad23bfc339ec71c1453a2ea4c47c45758d005e6af1e8a0513252599ea
     name: tce-all-in-one
@@ -253,7 +263,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.166705409Z"
+    created: "2023-03-06T18:50:06.338234285Z"
     description: A Helm chart for Kubernetes
     digest: d24089ccfb24ed539a5f73e95ad0537ff0f2fae1dd32a837b2c3bc661ca7f013
     name: tce-all-in-one
@@ -263,7 +273,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.16639921Z"
+    created: "2023-03-06T18:50:06.337946479Z"
     description: A Helm chart for Kubernetes
     digest: 3a27c6b53556746069eb3766591a9c3c7df4c93f5fb3cbf888ff1889d749bd5e
     name: tce-all-in-one
@@ -273,7 +283,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: pr-99
-    created: "2023-03-06T18:33:14.166106111Z"
+    created: "2023-03-06T18:50:06.337663274Z"
     description: A Helm chart for Kubernetes
     digest: 884ce41046d1f9d887ab977188fd31a27d47aafaf1a583441f448e9024a64687
     name: tce-all-in-one
@@ -283,7 +293,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-03-06T18:33:14.165759311Z"
+    created: "2023-03-06T18:50:06.337380169Z"
     description: A Helm chart for Kubernetes
     digest: 26380339011fcc92124f9d4703804fdb63153ba58aa363a421a7280808e174a7
     name: tce-all-in-one
@@ -293,7 +303,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-03-06T18:33:14.165510612Z"
+    created: "2023-03-06T18:50:06.337149865Z"
     description: A Helm chart for Kubernetes
     digest: f2e9dd61215c86d6e7e122f68d04f97cd27d38f8c13a721a19bf3c554c9c4fdb
     name: tce-all-in-one
@@ -303,7 +313,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-03-06T18:33:14.165260213Z"
+    created: "2023-03-06T18:50:06.336539054Z"
     description: A Helm chart for Kubernetes
     digest: 13460d5dcf40308706f9bb8752105ad168bad87722de908a5269362c06d841f7
     name: tce-all-in-one
@@ -313,7 +323,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-03-06T18:33:14.159486226Z"
+    created: "2023-03-06T18:50:06.330818649Z"
     description: A Helm chart for Kubernetes
     digest: 0e6b62f93ad4370b807af91bb4dafd19716423ace177bd41a15868de0af1baef
     name: tce-all-in-one
@@ -323,7 +333,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-03-06T18:33:14.155398635Z"
+    created: "2023-03-06T18:50:06.326620573Z"
     description: A Helm chart for Kubernetes
     digest: f6946b011c30dfacc6d70698082b8ed96cfcae7e4521f6ffd1a8fb7e9bc86bad
     name: tce-all-in-one
@@ -333,7 +343,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: pr-4
-    created: "2023-03-06T18:33:14.155108636Z"
+    created: "2023-03-06T18:50:06.326355468Z"
     description: A Helm chart for Kubernetes
     digest: 428ef144025063efd9126683a50f0f114cc92319f5a55b08ebe96406613502af
     name: tce-all-in-one
@@ -344,7 +354,7 @@ entries:
   tce-tmp-storage:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.167349308Z"
+    created: "2023-03-06T18:50:06.338750194Z"
     description: A Helm chart for Kubernetes
     digest: bb750313e15a1d019b08255fe5abc055a320ef5bdf3d3c1c5b02473632a4fb68
     name: tce-tmp-storage
@@ -355,7 +365,7 @@ entries:
   topos-observability:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.176836986Z"
+    created: "2023-03-06T18:50:06.348486372Z"
     description: Observability stack for Topos
     digest: 91dd060626001e466e9e90d7c4e0a74ad6a21b89ab10b86fcdd2d41c8d4685c4
     name: topos-observability
@@ -365,7 +375,7 @@ entries:
     version: 0.1.9-rc.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.176605686Z"
+    created: "2023-03-06T18:50:06.348265168Z"
     description: Observability stack for Topos
     digest: 719b3d3dc78ce2ce1c89001d05308869fb2b8abdb18bde2351bb4498585cd032
     name: topos-observability
@@ -375,7 +385,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.174666391Z"
+    created: "2023-03-06T18:50:06.346328632Z"
     description: Observability stack for Topos
     digest: e6eb176863f698364a3e84c38b4fb9f60ad031b36e38c48d1c0ac33cd5a02d5d
     name: topos-observability
@@ -385,7 +395,7 @@ entries:
     version: 0.1.8-rc.21
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.174441391Z"
+    created: "2023-03-06T18:50:06.346113229Z"
     description: Observability stack for Topos
     digest: 4d41fe3f614ad0c30f468f99835d2b5e8da992ec7cd6d44fea28973d62f56fff
     name: topos-observability
@@ -395,7 +405,7 @@ entries:
     version: 0.1.8-rc.20
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.173914493Z"
+    created: "2023-03-06T18:50:06.345614119Z"
     description: Observability stack for Topos
     digest: cbb12d7fc9658c242a6e5e330ad554c6dc0fad01b8255b00af04fcdd87ca3ad9
     name: topos-observability
@@ -405,7 +415,7 @@ entries:
     version: 0.1.8-rc.19
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.173629693Z"
+    created: "2023-03-06T18:50:06.345335114Z"
     description: Observability stack for Topos
     digest: b15728f7bfb1062b625271c37373a32d9869716e5d46836093e118680aa4fe8a
     name: topos-observability
@@ -415,7 +425,7 @@ entries:
     version: 0.1.8-rc.18
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.173389394Z"
+    created: "2023-03-06T18:50:06.34509411Z"
     description: Observability stack for Topos
     digest: 42595fed23403390390a3aa895f96c3f50502ae2ade42e4822b0113861db1829
     name: topos-observability
@@ -425,7 +435,7 @@ entries:
     version: 0.1.8-rc.17
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.173147594Z"
+    created: "2023-03-06T18:50:06.344849905Z"
     description: Observability stack for Topos
     digest: 907eb08d557c7eaead61033d4e3c9899396bfa481341afec0ecd2e43f9034935
     name: topos-observability
@@ -435,7 +445,7 @@ entries:
     version: 0.1.8-rc.16
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.172866495Z"
+    created: "2023-03-06T18:50:06.344605001Z"
     description: Observability stack for Topos
     digest: f06f95c4b769d230fe80618f564bbab1628121882beb1b09590c98e70339caf2
     name: topos-observability
@@ -445,7 +455,7 @@ entries:
     version: 0.1.8-rc.15
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.172618696Z"
+    created: "2023-03-06T18:50:06.344354896Z"
     description: Observability stack for Topos
     digest: 58c31d2adc4f08cf6332b644d387d85dd565803f591acd15698a1a03b8ad8122
     name: topos-observability
@@ -455,7 +465,7 @@ entries:
     version: 0.1.8-rc.14
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.172362396Z"
+    created: "2023-03-06T18:50:06.344065891Z"
     description: Observability stack for Topos
     digest: a44e6281c11491442edf29556c27df10e8b96bfc13e0570fe6f38c12a4d1f2e9
     name: topos-observability
@@ -465,7 +475,7 @@ entries:
     version: 0.1.8-rc.13
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.172116997Z"
+    created: "2023-03-06T18:50:06.343665184Z"
     description: Observability stack for Topos
     digest: a0ee11743173557dc09f0d8a0f7881eec3960ad5bad11e1b5efb5e375c553668
     name: topos-observability
@@ -475,7 +485,7 @@ entries:
     version: 0.1.8-rc.12
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.171880597Z"
+    created: "2023-03-06T18:50:06.343367178Z"
     description: Observability stack for Topos
     digest: e9acf25cefef201d97f1da7caa2688bec39ff6d9f4c16b389847474fd2f6b978
     name: topos-observability
@@ -485,7 +495,7 @@ entries:
     version: 0.1.8-rc.11
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.171589998Z"
+    created: "2023-03-06T18:50:06.343023272Z"
     description: Observability stack for Topos
     digest: 4a7a7aa4444c7d976f8d119908b642e4b00dbee15c1afe1bcca900171c1f550d
     name: topos-observability
@@ -495,7 +505,7 @@ entries:
     version: 0.1.8-rc.10
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.176371687Z"
+    created: "2023-03-06T18:50:06.348038064Z"
     description: Observability stack for Topos
     digest: bec9fc3147c9960a89ccbcf21e26c443708516cb73e4797cfb3d407220f83a48
     name: topos-observability
@@ -505,7 +515,7 @@ entries:
     version: 0.1.8-rc.9
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.176080988Z"
+    created: "2023-03-06T18:50:06.347729858Z"
     description: Observability stack for Topos
     digest: 1b7eae85f29b6173296ad23c246c8d3deb09a763b8502907cd4ab9bc7042316d
     name: topos-observability
@@ -515,7 +525,7 @@ entries:
     version: 0.1.8-rc.8
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.175807188Z"
+    created: "2023-03-06T18:50:06.347456753Z"
     description: Observability stack for Topos
     digest: 33627be833e77a0fa592b10d3259af817b581d9fc3832431445ec498a2a3459c
     name: topos-observability
@@ -525,7 +535,7 @@ entries:
     version: 0.1.8-rc.7
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.175531789Z"
+    created: "2023-03-06T18:50:06.347185648Z"
     description: Observability stack for Topos
     digest: 5b140ea5a85af8d2092093af7468ddd5b5726ec7832ea21c69210da880cb588f
     name: topos-observability
@@ -535,7 +545,7 @@ entries:
     version: 0.1.8-rc.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.175254789Z"
+    created: "2023-03-06T18:50:06.346906943Z"
     description: Observability stack for Topos
     digest: 7a0ff9f620f964cb5ac32f3e0f212105c5e20d38de5296ecb9e47a5603786270
     name: topos-observability
@@ -545,7 +555,7 @@ entries:
     version: 0.1.8-rc.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.17497179Z"
+    created: "2023-03-06T18:50:06.346605738Z"
     description: Observability stack for Topos
     digest: fdd8521e2967952adeeab129068eab361718311f45b2e51baf9b2d4f812138ec
     name: topos-observability
@@ -555,7 +565,7 @@ entries:
     version: 0.1.8-rc.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.174214392Z"
+    created: "2023-03-06T18:50:06.345893325Z"
     description: Observability stack for Topos
     digest: 11403c91bf0fe5824e6fea6dd658c64a71753c269eac206c6d2a46b1718c3b44
     name: topos-observability
@@ -565,7 +575,7 @@ entries:
     version: 0.1.8-rc.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.171291899Z"
+    created: "2023-03-06T18:50:06.342669066Z"
     description: Observability stack for Topos
     digest: b0953a5ec8b282163dc512f087e220dcc10ebc091453e146f0a6f7a31a34a02a
     name: topos-observability
@@ -575,7 +585,7 @@ entries:
     version: 0.1.8-rc.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.170968299Z"
+    created: "2023-03-06T18:50:06.342262558Z"
     description: Observability stack for Topos
     digest: 6393f5806fd453c6716fcc824b721de95b73bdb2ee78e0a9c010e0a1946361be
     name: topos-observability
@@ -585,7 +595,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.170422601Z"
+    created: "2023-03-06T18:50:06.341296441Z"
     description: Observability stack for Topos
     digest: f05fd9de098bc1183349a3260985a690ff01a92a7dc0706ad4ad21a8cbe33555
     name: topos-observability
@@ -595,7 +605,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.169709902Z"
+    created: "2023-03-06T18:50:06.340949534Z"
     description: Observability stack for Topos
     digest: 40cb3767fcb15a2cb2387d93f082363c3b2aad1e62dbfdae601358751899b1e4
     name: topos-observability
@@ -605,7 +615,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.169351003Z"
+    created: "2023-03-06T18:50:06.340584228Z"
     description: Observability stack for Topos
     digest: e9409281e13daedf2d1f6f033bd905edfe0ab104fdba53bbe1c6a8bbdea8bc22
     name: topos-observability
@@ -615,7 +625,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.168954704Z"
+    created: "2023-03-06T18:50:06.34014732Z"
     description: Observability stack for Topos
     digest: 886fc7458dfa08d289623468f9a6f21ace633a60456cf697c445f4541e5a384c
     name: topos-observability
@@ -625,7 +635,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.168313106Z"
+    created: "2023-03-06T18:50:06.339533108Z"
     description: Observability stack for Topos
     digest: 4bf98697c0c53668c4d4ed91c3aadfe0fcedcd9fd70bcb65b92dd8e23004c366
     name: topos-observability
@@ -635,7 +645,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.167997506Z"
+    created: "2023-03-06T18:50:06.339259503Z"
     description: Observability stack for Topos
     digest: 9f8e4f1946e5bd39ab83f51c2f737930e97e8cb83806f3945ced125317a1b976
     name: topos-observability
@@ -645,7 +655,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-03-06T18:33:14.167683907Z"
+    created: "2023-03-06T18:50:06.338980698Z"
     description: Observability stack for Topos
     digest: c2a32c9420dd23875c0b6f90728f1b0e4ad543157b5f3120c73f9790a811b5f7
     name: topos-observability
@@ -653,4 +663,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/toposware/helm-charts/gh-pages/topos-observability-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-06T18:33:14.154628937Z"
+generated: "2023-03-06T18:50:06.32590416Z"
