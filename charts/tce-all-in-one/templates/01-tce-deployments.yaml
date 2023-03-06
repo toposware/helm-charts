@@ -35,14 +35,20 @@ spec:
           args: {{ $.Values.args }}
           imagePullPolicy: Always
           {{ if eq $.Values.mode "boot" }}
+          startupProbe:
+            exec:
+              command: ["liveness.sh", "boot"]
           livenessProbe:
             exec:
               command: ["liveness.sh", "boot"]
           args: ["boot", "tce", "run"]
           {{ else }}
-          livenessProbe:
+          startupProbe:
             exec:
               command: ["liveness.sh", "peer"]
+          livenessProbe:
+            exec:
+              command: ["liveness.sh", "boot"]
           args: ["tce", "run"]
           {{ end }}
           ports:
