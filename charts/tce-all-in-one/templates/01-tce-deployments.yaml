@@ -38,17 +38,11 @@ spec:
           startupProbe:
             exec:
               command: ["liveness.sh", "boot"]
-          livenessProbe:
-            exec:
-              command: ["liveness.sh", "boot"]
           args: ["boot", "tce", "run"]
           {{ else }}
           startupProbe:
             exec:
               command: ["liveness.sh", "peer"]
-          livenessProbe:
-            exec:
-              command: ["liveness.sh", "boot"]
           args: ["tce", "run"]
           {{ end }}
           ports:
