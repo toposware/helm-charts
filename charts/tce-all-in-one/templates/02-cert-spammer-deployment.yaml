@@ -1,4 +1,6 @@
 {{ if .Values.certSpammer }}
+{{ $spammer := lookup "apps/v1" "Deployment" .Release.Namespace "cert-spammer" }}
+{{ if not $spammer }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -43,4 +45,5 @@ spec:
       - name: shared
         persistentVolumeClaim:
           claimName: shared
+{{ end }}
 {{ end }}

@@ -30,7 +30,7 @@ credentials:
   password: secret
 
 env:
-  RUST_LOG: info,topos_p2p=debug,topos_tce_node_app=debug,topos_tce_protocols_reliable_broadcast=debug
+  RUST_LOG: info,topos=debug
   TCE_DB_PATH: /tmp/default-db
   TCE_API_ADDR: 0.0.0.0:1340
   TCE_JAEGER_SERVICE_NAME: tce-node

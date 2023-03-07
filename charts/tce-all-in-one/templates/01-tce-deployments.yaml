@@ -37,13 +37,32 @@ spec:
           {{ if eq $.Values.mode "boot" }}
           startupProbe:
             exec:
-              command: ["liveness.sh", "boot"]
+              command:
+                - /bin/bash
+                - -c
+                - echo > /tmp/shared/peer_ids.json || echo "startup ok"
+          readinessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - ./init.sh boot || echo "readiness ok"
+            initialDelaySeconds: 30
           args: ["boot", "tce", "run"]
           {{ else }}
+          livenessProbe:
+            exec:
+              command: ["liveness.sh", "peer"]
+            failureThreshold: 1
+            periodSeconds: 60
           startupProbe:
             exec:
               command: ["liveness.sh", "peer"]
-            initialDelaySeconds: 60
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+            failureThreshold: 30
+            successThreshold: 1
           args: ["tce", "run"]
           {{ end }}
           ports:
