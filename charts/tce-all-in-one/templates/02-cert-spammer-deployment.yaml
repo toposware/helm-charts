@@ -34,12 +34,6 @@ spec:
           volumeMounts:
             - mountPath: /tmp/shared
               name: shared
-          startupProbe:
-            exec:
-              command:
-                - /bin/cat
-                - /tmp/shared/peer_ids.json
-            initialDelaySeconds: 90
           env:
             - name: RUST_LOG
               value: info
