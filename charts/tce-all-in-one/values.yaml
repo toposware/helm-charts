@@ -33,8 +33,8 @@ env:
   RUST_LOG: info,topos=debug
   TCE_DB_PATH: /tmp/default-db
   TCE_API_ADDR: 0.0.0.0:1340
-  TCE_JAEGER_SERVICE_NAME: tce-node
-  TCE_JAEGER_AGENT: https://telemetry.nowhere.com
+  TOPOS_OTLP_AGENT: tce-node
+  TOPOS_OTLP_SERVICE_NAME: https://telemetry.nowhere.com
   TCE_ECHO_SAMPLE_SIZE: "6"
   TCE_READY_SAMPLE_SIZE: "6"
   TCE_DELIVERY_SAMPLE_SIZE: "6"
