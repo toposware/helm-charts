@@ -61,10 +61,10 @@ spec:
               value: "{{ $.Values.env.TCE_DB_PATH }}"
             - name: TCE_API_ADDR
               value: "{{ $.Values.env.TCE_API_ADDR }}"
-            - name: TCE_JAEGER_SERVICE_NAME
-              value: "{{ $.Values.env.TCE_JAEGER_SERVICE_NAME }}"
-            - name: TCE_JAEGER_AGENT
-              value: "{{ $.Values.env.TCE_JAEGER_AGENT }}"
+            - name: TOPOS_OTLP_SERVICE_NAME
+              value: "{{ $.Values.env.TOPOS_OTLP_SERVICE_NAME }}"
+            - name: TOPOS_OTLP_AGENT
+              value: "{{ $.Values.env.TOPOS_OTLP_AGENT }}"
             - name: TCE_ECHO_SAMPLE_SIZE
               value: "{{ $.Values.env.TCE_ECHO_SAMPLE_SIZE }}"
             - name: TCE_READY_SAMPLE_SIZE
