@@ -1,11 +1,3 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: {{ .Values.mode }}-pull-secret
-type: kubernetes.io/dockerconfigjson
-data:
-  .dockerconfigjson: {{ template "imagePullSecret" . }}
----
 {{- range $index, $e := until (int $.Values.replicas) }}
 apiVersion: apps/v1
 kind: Deployment
@@ -27,42 +19,21 @@ spec:
         node: {{ $.Values.mode }}
     spec:
       hostname: {{ $.Values.mode }}-{{ $index }}
-      imagePullSecrets:
-        - name: {{ $.Values.mode }}-pull-secret
       containers:
         - name: {{ $.Values.mode }}
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
-          args: {{ $.Values.args }}
           imagePullPolicy: Always
-          {{ if eq $.Values.mode "boot" }}
           startupProbe:
             exec:
-              command:
-                - /bin/bash
-                - -c
-                - echo > /tmp/shared/peer_ids.json || echo "startup ok"
-          readinessProbe:
-            exec:
-              command:
-                - /bin/bash
-                - -c
-                - ./init.sh boot || echo "readiness ok"
+              command: ["/tmp/liveness.sh", "{{ $.Values.mode }}"]
             initialDelaySeconds: 30
-          args: ["boot", "tce", "run"]
-          {{ else }}
-          livenessProbe:
-            exec:
-              command: ["liveness.sh", "peer"]
-            failureThreshold: 5
-            periodSeconds: 60
-          startupProbe:
-            exec:
-              command: ["liveness.sh", "peer"]
-            initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 1
             failureThreshold: 30
             successThreshold: 1
+          {{ if eq $.Values.mode "boot" }}
+          args: ["boot", "tce", "run"]
+          {{ else }}
           args: ["tce", "run"]
           {{ end }}
           ports:
@@ -106,6 +77,8 @@ spec:
               value: "{{ $.Values.env.TCE_READY_THRESHOLD }}"
             - name: TCE_DELIVERY_THRESHOLD
               value: "{{ $.Values.env.TCE_DELIVERY_THRESHOLD }}"
+            - name: TOPOS_OTLP_TAGS
+              value: "{{ $.Values.env.TOPOS_OTLP_TAGS }}"
       volumes:
       - name: shared
         persistentVolumeClaim:

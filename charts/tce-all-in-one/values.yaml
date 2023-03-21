@@ -45,3 +45,4 @@ env:
   TCE_LOCAL_KS: "1"
   RUST_BACKTRACE: full
   TOOLCHAIN_VERSION: stable
+  TOPOS_OTLP_TAGS: key1=value1,key2=value2
