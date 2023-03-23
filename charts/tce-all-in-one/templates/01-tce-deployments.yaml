@@ -26,16 +26,12 @@ spec:
           startupProbe:
             exec:
               command: ["/tmp/liveness.sh", "{{ $.Values.mode }}"]
-            initialDelaySeconds: 30
+            initialDelaySeconds: 10
             periodSeconds: 5
             timeoutSeconds: 1
             failureThreshold: 30
             successThreshold: 1
-          {{ if eq $.Values.mode "boot" }}
-          args: ["boot", "tce", "run"]
-          {{ else }}
-          args: ["tce", "run"]
-          {{ end }}
+          args: ["{{ $.Values.mode }}", "tce", "run"]
           ports:
             - name: p2p
               containerPort: {{ $.Values.ports.p2p }}
