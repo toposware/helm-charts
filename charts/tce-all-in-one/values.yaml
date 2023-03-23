@@ -9,8 +9,6 @@ mode: boot
 host: nowhere.com
 # create ingress (true | false)
 ingress: false
-# deploy cert-spammer (true | false)
-certSpammer: true
 
 acme:
   email: nobody@nowhere.com
