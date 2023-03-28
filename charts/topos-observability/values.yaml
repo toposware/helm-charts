@@ -9,3 +9,4 @@ acme:
 environment: staging
 otelHost: otel.nowhere.com
 kibanaHost: kibana.nowhere.com
+elasticsearchHost: elasticsearch.nowhere.com

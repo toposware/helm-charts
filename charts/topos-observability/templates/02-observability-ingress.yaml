@@ -10,6 +10,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.kibanaHost }}
+    - {{ .Values.elasticsearchHost }}
     secretName: "{{ .Values.kibanaHost }}-secret-tls"
   rules:
     - host: {{ .Values.kibanaHost }}
@@ -20,6 +21,16 @@ spec:
                 name: quickstart-kb-http
                 port:
                   number: 5601
+            path: /
+            pathType: Prefix
+    - host: {{ .Values.elasticsearchHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: quickstart-es-http
+                port:
+                  number: 9200
             path: /
             pathType: Prefix
 ---
