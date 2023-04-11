@@ -24,8 +24,16 @@ spec:
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
           imagePullPolicy: Always
           startupProbe:
+            {{ if eq $.Values.mode "boot" }}
             exec:
               command: ["/tmp/liveness.sh", "{{ $.Values.mode }}"]
+            {{ else }}
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - PEER=$(topos tce keys --from-seed=$HOSTNAME); NODE="http://$HOSTNAME:1340"; /tmp/liveness.sh "{{ $.Values.mode }}" && { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. + [$PEER] | unique )' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. + [$NODE] | unique)' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 0; } || { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. - [$PEER])' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. - [$NODE])' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 1; };
+            {{ end }}
             initialDelaySeconds: 10
             periodSeconds: 5
             timeoutSeconds: 1
