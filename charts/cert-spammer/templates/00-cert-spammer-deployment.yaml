@@ -41,9 +41,9 @@ spec:
             - name: RUST_LOG
               value: info
             - name: CERT_PER_BATCH
-              value: "1"
+              value: "{{ $.Values.env.CERT_PER_BATCH }}"
             - name: BATCH_TIME_INTERVAL
-              value: "4"
+              value: "{{ $.Values.env.BATCH_TIME_INTERVAL }}"
             - name: TARGET_NODES_PATH
               value: /tmp/shared/peer_nodes.json
       volumes:
