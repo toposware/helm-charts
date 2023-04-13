@@ -45,10 +45,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - { { .Values.otelHost } }
-      secretName: "{{ .Values.otelHost }}-secret-tls"
+        - "rpc.{ { .Values.otelHost } }"
+      secretName: "rpc.{{ .Values.otelHost }}-secret-tls"
   rules:
-    - host: { { .Values.otelHost } }
+    - host: "rpc.{ { .Values.otelHost } }"
       http:
         paths:
           - backend:
