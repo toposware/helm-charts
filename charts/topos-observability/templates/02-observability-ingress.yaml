@@ -8,12 +8,12 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
 spec:
   tls:
-  - hosts:
-    - {{ .Values.kibanaHost }}
-    - {{ .Values.elasticsearchHost }}
-    secretName: "{{ .Values.kibanaHost }}-secret-tls"
+    - hosts:
+        - { { .Values.kibanaHost } }
+        - { { .Values.elasticsearchHost } }
+      secretName: "{{ .Values.kibanaHost }}-secret-tls"
   rules:
-    - host: {{ .Values.kibanaHost }}
+    - host: { { .Values.kibanaHost } }
       http:
         paths:
           - backend:
@@ -23,7 +23,7 @@ spec:
                   number: 5601
             path: /
             pathType: Prefix
-    - host: {{ .Values.elasticsearchHost }}
+    - host: { { .Values.elasticsearchHost } }
       http:
         paths:
           - backend:
@@ -37,18 +37,18 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: otel
+  name: otel-rpc
   annotations:
     kubernetes.io/ingress.class: "nginx"
     cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
     nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
 spec:
   tls:
-  - hosts:
-    - {{ .Values.otelHost }}
-    secretName: "{{ .Values.otelHost }}-secret-tls"
+    - hosts:
+        - "rpc.{ { .Values.otelHost } }"
+      secretName: "rpc.{{ .Values.otelHost }}-secret-tls"
   rules:
-    - host: {{ .Values.otelHost }}
+    - host: "rpc.{ { .Values.otelHost } }"
       http:
         paths:
           - backend:
@@ -56,5 +56,30 @@ spec:
                 name: otel-collector-opentelemetry-collector
                 port:
                   number: 4317
+            path: /
+            pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: otel-http
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  tls:
+    - hosts:
+        - { { .Values.otelHost } }
+      secretName: "{{ .Values.otelHost }}-secret-tls"
+  rules:
+    - host: { { .Values.otelHost } }
+      http:
+        paths:
+          - backend:
+              service:
+                name: otel-collector-opentelemetry-collector
+                port:
+                  number: 4318
             path: /
             pathType: Prefix
