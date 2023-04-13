@@ -5,7 +5,7 @@ metadata:
 type: kubernetes.io/basic-auth
 stringData:
   username: viewer
-  password: { { randAlphaNum 16 } }
+  password: {{ randAlphaNum 16 }}
   roles: viewer
 ---
 apiVersion: v1
@@ -15,7 +15,7 @@ metadata:
 type: kubernetes.io/basic-auth
 stringData:
   username: editor
-  password: { { randAlphaNum 16 } }
+  password: {{ randAlphaNum 16 }}
   roles: editor
 ---
 apiVersion: elasticsearch.k8s.elastic.co/v1

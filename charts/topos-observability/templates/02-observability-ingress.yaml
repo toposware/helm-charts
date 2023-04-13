@@ -9,11 +9,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - { { .Values.kibanaHost } }
-        - { { .Values.elasticsearchHost } }
+        - {{ .Values.kibanaHost }}
+        - {{ .Values.elasticsearchHost }}
       secretName: "{{ .Values.kibanaHost }}-secret-tls"
   rules:
-    - host: { { .Values.kibanaHost } }
+    - host: {{ .Values.kibanaHost }}
       http:
         paths:
           - backend:
@@ -23,7 +23,7 @@ spec:
                   number: 5601
             path: /
             pathType: Prefix
-    - host: { { .Values.elasticsearchHost } }
+    - host: {{ .Values.elasticsearchHost }}
       http:
         paths:
           - backend:
@@ -45,10 +45,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - "rpc.{ { .Values.otelHost } }"
+        - "rpc.{{ .Values.otelHost }}"
       secretName: "rpc.{{ .Values.otelHost }}-secret-tls"
   rules:
-    - host: "rpc.{ { .Values.otelHost } }"
+    - host: "rpc.{{ .Values.otelHost }}"
       http:
         paths:
           - backend:
@@ -70,10 +70,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - { { .Values.otelHost } }
+        - {{ .Values.otelHost }}
       secretName: "{{ .Values.otelHost }}-secret-tls"
   rules:
-    - host: { { .Values.otelHost } }
+    - host: {{ .Values.otelHost }}
       http:
         paths:
           - backend:
