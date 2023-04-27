@@ -19,6 +19,18 @@ spec:
         node: {{ $.Values.mode }}
     spec:
       hostname: {{ $.Values.mode }}-{{ $index }}
+      {{ if $.Values.singleTCENodePerK8sNode }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: node
+                    operator: In
+                    values:
+                      - {{ $.Values.mode }}
+              topologyKey: "kubernetes.io/hostname"
+      {{ end }}
       containers:
         - name: {{ $.Values.mode }}
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
@@ -50,13 +62,6 @@ spec:
             - name: http
               containerPort: {{ $.Values.ports.http }}
               protocol: TCP
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           volumeMounts:
             - mountPath: /tmp/shared
               name: shared
