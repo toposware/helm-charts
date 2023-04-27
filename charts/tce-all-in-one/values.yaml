@@ -6,6 +6,9 @@ replicas: 5
 # mode can be (boot | peer)
 mode: boot
 
+# deploy a single TCE node per K8s node
+singleTCENodePerK8sNode: true
+
 host: nowhere.com
 # create ingress (true | false)
 ingress: false
