@@ -47,6 +47,8 @@ kind: Kibana
 metadata:
   name: quickstart
 spec:
+  config:
+    xpack.apm.ui.maxTraceItems: 10000
   version: 8.6.0
   count: 1
   elasticsearchRef:
