@@ -30,7 +30,7 @@ spec:
       - secretName: editor-config
   nodeSets:
     - name: default
-      count: 2
+      count: 3
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
@@ -59,7 +59,7 @@ metadata:
   namespace: default
 spec:
   version: 8.6.0
-  count: 1
+  count: 3
   elasticsearchRef:
     name: quickstart
 ---
