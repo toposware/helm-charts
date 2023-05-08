@@ -39,7 +39,7 @@ spec:
               - ReadWriteOnce
             resources:
               requests:
-                storage: 10Gi
+                storage: 100Gi
             storageClassName: gp2
 ---
 apiVersion: kibana.k8s.elastic.co/v1
