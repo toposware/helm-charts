@@ -4,7 +4,7 @@ metadata:
   name: elk
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/issuer: "letsencrypt-production"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
 spec:
   tls:
@@ -80,5 +80,42 @@ spec:
                 name: otel-collector-opentelemetry-collector
                 port:
                   number: 4318
+            path: /
+            pathType: Prefix
+---
+apiVersion: v1
+data:
+  auth: {{ randAlphaNum 16 }}
+kind: Secret
+metadata:
+  name: prometheus-basic-auth
+  namespace: default
+type: Opaque
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: prometheus-basic-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.prometheusHost }}
+      secretName: "{{ .Values.prometheusHost }}-secret-tls"
+  rules:
+    - host: {{ .Values.prometheusHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: prometheus-kube-prometheus-prometheus
+                port:
+                  number: 9090
             path: /
             pathType: Prefix

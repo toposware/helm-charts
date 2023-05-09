@@ -109,16 +109,6 @@ spec:
             endpoint: 0.0.0.0:4318
             cors:
               allowed_origins: ["*"]
-      prometheus:
-        config:
-          scrape_configs:
-            - job_name: opentelemetry-collector
-              scrape_interval: 10s
-              static_configs:
-                - targets:
-                    - ${MY_POD_IP}:8888
-      zipkin:
-        endpoint: 0.0.0.0:9411
     service:
       telemetry:
         metrics:
@@ -136,15 +126,6 @@ spec:
             - batch
           receivers:
             - otlp
-        metrics:
-          exporters:
-            - logging
-          processors:
-            - memory_limiter
-            - batch
-          receivers:
-            - otlp
-            - prometheus
         traces:
           exporters:
             - logging
@@ -154,7 +135,6 @@ spec:
             - batch
           receivers:
             - otlp
-            - zipkin
   envFrom:
     - secretRef:
         name: quickstart-apm-token
