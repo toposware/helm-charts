@@ -85,7 +85,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  auth: {{ (htpasswd admin randAlphaNum 16) | b64enc | quote }}
+  auth: {{ (htpasswd "admin" randAlphaNum 16) | b64enc | quote }}
 kind: Secret
 metadata:
   name: prometheus-basic-auth
