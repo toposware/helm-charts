@@ -83,10 +83,9 @@ spec:
             path: /
             pathType: Prefix
 ---
-{{ $basicAuthPassword := randAlphaNum 16 }}
 apiVersion: v1
 data:
-  auth: {{ (htpasswd "admin" $basicAuthPassword) | b64enc | quote }}
+  auth: {{ (htpasswd .Values.prometheus.user .Values.prometheus.password) | b64enc | quote }}
 kind: Secret
 metadata:
   name: prometheus-basic-auth
