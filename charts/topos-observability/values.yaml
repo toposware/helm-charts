@@ -10,3 +10,8 @@ environment: staging
 otelHost: otel.nowhere.com
 kibanaHost: kibana.nowhere.com
 elasticsearchHost: elasticsearch.nowhere.com
+prometheusHost: prometheus.nowhere.com
+
+prometheus:
+  user: nobody
+  password: secret
