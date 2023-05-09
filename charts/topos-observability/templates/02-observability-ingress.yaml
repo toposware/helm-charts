@@ -85,7 +85,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  auth: {{ randAlphaNum 16 }}
+  auth: {{ randAlphaNum 16 | b64enc }}
 kind: Secret
 metadata:
   name: prometheus-basic-auth
