@@ -1,3 +1,4 @@
+{{ if .Values.remoteCluster }}
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -9,3 +10,16 @@ parameters:
   directoryPerms: "700"
   gidRangeStart: "1000" # optional
   gidRangeEnd: "2000" # optional
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: shared
+spec:
+  storageClassName: efs-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+{{ end }}
