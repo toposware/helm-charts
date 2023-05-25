@@ -4,7 +4,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: shared
 spec:
-  storageClassName: efs-sc
   accessModes:
   - ReadWriteMany
   resources:
