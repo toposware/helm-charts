@@ -38,15 +38,15 @@ spec:
             - name: TARGET_NODES_PATH
               value: /tmp/shared/peer_nodes.json
             - name: OTLP_BATCH_SCHEDULED_DELAY
-              value: "${{ $.Values.env.OTLP_BATCH_SCHEDULED_DELAY }}"
+              value: "{{ $.Values.env.OTLP_BATCH_SCHEDULED_DELAY }}"
             - name: OTLP_BATCH_MAX_CONCURRENT_EXPORTS
-              value: "${{ $.Values.env.OTLP_BATCH_MAX_CONCURRENT_EXPORTS }}"
+              value: "{{ $.Values.env.OTLP_BATCH_MAX_CONCURRENT_EXPORTS }}"
             - name: OTLP_BATCH_MAX_EXPORTER_BATCH_SIZE
-              value: "${{ $.Values.env.OTLP_BATCH_MAX_EXPORTER_BATCH_SIZE }}"
+              value: "{{ $.Values.env.OTLP_BATCH_MAX_EXPORTER_BATCH_SIZE }}"
             - name: OTLP_BATCH_EXPORT_TIMEOUT
-              value: "${{ $.Values.env.OTLP_BATCH_EXPORT_TIMEOUT }}"
+              value: "{{ $.Values.env.OTLP_BATCH_EXPORT_TIMEOUT }}"
             - name: OTLP_BATCH_MAX_QUEUE_SIZE
-              value: "${{ $.Values.env.OTLP_BATCH_MAX_QUEUE_SIZE }}"
+              value: "{{ $.Values.env.OTLP_BATCH_MAX_QUEUE_SIZE }}"
       volumes:
       - name: shared
         persistentVolumeClaim:
