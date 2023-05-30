@@ -33,13 +33,13 @@ spec:
               value: info
 
             - name: TOPOS_NETWORK_SPAMMER_CERT_PER_BATCH
-              value: {{ $.Values.env.TOPOS_NETWORK_SPAMMER_CERT_PER_BATCH }}
+              value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_CERT_PER_BATCH }}"
             - name: TOPOS_NETWORK_SPAMMER_BATCH_INTERVAL
-              value: {{ $.Values.env.TOPOS_NETWORK_SPAMMER_BATCH_INTERVAL }}
+              value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_BATCH_INTERVAL }}"
             - name: TOPOS_NETWORK_SPAMMER_NUMBER_OF_BATCHES
-              value: {{ $.Values.env.TOPOS_NETWORK_SPAMMER_NUMBER_OF_BATCHES }}
+              value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_NUMBER_OF_BATCHES }}"
             - name: TOPOS_NETWORK_SPAMMER_NUMBER_OF_SUBNETS
-              value: {{ $.Values.env.TOPOS_NETWORK_SPAMMER_NUMBER_OF_SUBNETS }}
+              value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_NUMBER_OF_SUBNETS }}"
 
             - name: OTLP_BATCH_SCHEDULED_DELAY
               value: "{{ $.Values.env.OTLP_BATCH_SCHEDULED_DELAY }}"
