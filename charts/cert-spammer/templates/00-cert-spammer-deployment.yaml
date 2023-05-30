@@ -35,6 +35,8 @@ spec:
               value: "{{ $.Values.env.CERT_PER_BATCH }}"
             - name: BATCH_TIME_INTERVAL
               value: "{{ $.Values.env.BATCH_TIME_INTERVAL }}"
+            - name: NUMBER_OF_BATCHES
+              value: "{{ $.Values.env.NUMBER_OF_BATCHES }}"
             - name: TARGET_NODES_PATH
               value: /tmp/shared/peer_nodes.json
             - name: OTLP_BATCH_SCHEDULED_DELAY
