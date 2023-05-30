@@ -30,7 +30,7 @@ spec:
             initialDelaySeconds: 10
           env:
             - name: RUST_LOG
-              value: info
+              value: warn
 
             - name: TOPOS_NETWORK_SPAMMER_CERT_PER_BATCH
               value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_CERT_PER_BATCH }}"
