@@ -108,6 +108,10 @@ spec:
               value: "{{ $.Values.env.OTLP_BATCH_EXPORT_TIMEOUT }}"
             - name: OTLP_BATCH_MAX_QUEUE_SIZE
               value: "{{ $.Values.env.OTLP_BATCH_MAX_QUEUE_SIZE }}"
+            - name: OTEL_EXPORTER_OTLP_COMPRESSION
+              value: "{{ $.Values.env.OTEL_EXPORTER_OTLP_COMPRESSION }}"
+            - name: OTEL_EXPORTER_OTLP_TIMEOUT
+              value: "{{ $.Values.env.OTEL_EXPORTER_OTLP_TIMEOUT }}"
       volumes:
       - name: shared
         persistentVolumeClaim:
