@@ -36,8 +36,10 @@ spec:
               value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_CERT_PER_BATCH }}"
             - name: TOPOS_NETWORK_SPAMMER_BATCH_INTERVAL
               value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_BATCH_INTERVAL }}"
+            {{ if $.Values.env.TOPOS_NETWORK_SPAMMER_NUMBER_OF_BATCHES }}
             - name: TOPOS_NETWORK_SPAMMER_NUMBER_OF_BATCHES
               value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_NUMBER_OF_BATCHES }}"
+            {{ end }}
             - name: TOPOS_NETWORK_SPAMMER_NUMBER_OF_SUBNETS
               value: "{{ $.Values.env.TOPOS_NETWORK_SPAMMER_NUMBER_OF_SUBNETS }}"
 
