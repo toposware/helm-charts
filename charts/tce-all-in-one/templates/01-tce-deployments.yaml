@@ -35,13 +35,21 @@ spec:
         - name: {{ $.Values.mode }}
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
           imagePullPolicy: Always
+          livenessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - { topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340; };
+            failureThreshold: 1
+            periodSeconds: 15
           startupProbe:
             {{ if eq $.Values.mode "boot" }}
             exec:
               command:
                 - /bin/bash
                 - -c
-                - topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json;
+                - { topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340; };
             {{ else }}
             exec:
               command:
