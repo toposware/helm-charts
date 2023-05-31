@@ -1,6 +1,9 @@
 # Default values for tce-all-in-one.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+image:
+  repository: ghcr.io/topos-network/topos
+  tag: main-network
 
 env:
   TOPOS_NETWORK_SPAMMER_CERT_PER_BATCH: "1"
