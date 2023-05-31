@@ -40,22 +40,23 @@ spec:
               command:
                 - /bin/bash
                 - -c
-                - { topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340; };
-            failureThreshold: 1
+                - topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340
+            initialDelaySeconds: 15
             periodSeconds: 15
+            failureThreshold: 10
           startupProbe:
             {{ if eq $.Values.mode "boot" }}
             exec:
               command:
-                - /bin/bash
-                - -c
-                - { topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340; };
+              - /bin/bash
+              - -c
+              - topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json
             {{ else }}
             exec:
               command:
                 - /bin/bash
                 - -c
-                - PEER=$(topos tce keys --from-seed=$HOSTNAME); NODE="http://$HOSTNAME:1340"; { topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340; } && { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. + [$PEER] | unique )' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. + [$NODE] | unique)' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 0; } || { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. - [$PEER])' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. - [$NODE])' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 1; };
+                - topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340
             {{ end }}
             initialDelaySeconds: 10
             periodSeconds: 10
