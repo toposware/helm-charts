@@ -36,22 +36,33 @@ spec:
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
           imagePullPolicy: Always
 
+          {{ if eq $.Values.mode "boot" }}
           livenessProbe:
             exec:
               command:
                 - /bin/bash
                 - -c
-                - topos tce status --node http://localhost:1340
-            initialDelaySeconds: 15
-            failureThreshold: 2
+                - topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340
+                # - PEER=$(topos tce keys --from-seed=$HOSTNAME); NODE="http://$HOSTNAME:1340"; { topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340; } && { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. + [$PEER] | unique )' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. + [$NODE] | unique)' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 0; } || { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. - [$PEER])' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. - [$NODE])' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 1; };
+            failureThreshold: 10
+            initialDelaySeconds: 30
+          {{ end }}
+
+
+          {{ if eq $.Values.mode "peer" }}
 
           readinessProbe:
             exec:
               command:
                 - /bin/bash
                 - -c
-                - topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json
+                - topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340
+                # - PEER=$(topos tce keys --from-seed=$HOSTNAME); NODE="http://$HOSTNAME:1340"; { topos tce push-peer-list --node http://localhost:1340 --format json /tmp/shared/peer_ids.json && topos tce status --node http://localhost:1340; } && { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. + [$PEER] | unique )' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. + [$NODE] | unique)' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 0; } || { ( flock --exclusive -w 10 201 || exit 1; cat <<< $(jq --arg PEER $PEER '. |= (. - [$PEER])' /tmp/shared/peer_ids.json) > /tmp/shared/peer_ids.json;) 201>"/tmp/shared/peer_ids.json.lock"; ( flock --exclusive -w 10 200 || exit 1; cat <<< $(jq --arg NODE $NODE '.nodes |= (. - [$NODE])' /tmp/shared/peer_nodes.json) > /tmp/shared/peer_nodes.json;) 200>"/tmp/shared/peer_nodes.json.lock"; exit 1; };
             initialDelaySeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 10
+
+          {{ end }}
 
           startupProbe:
             tcpSocket:
@@ -119,7 +130,9 @@ spec:
             - name: OTEL_EXPORTER_OTLP_TIMEOUT
               value: "{{ $.Values.env.OTEL_EXPORTER_OTLP_TIMEOUT }}"
             - name: TOPOS_BROADCAST_MAX_BUFFER_SIZE
-              value: "100"
+              value: "{{ $.Values.env.TOPOS_BROADCAST_MAX_BUFFER_SIZE }}"
+            - name: TOPOS_MINIMUM_TCE_CLUSTER_SIZE
+              value: "{{ $.Values.env.TOPOS_MINIMUM_TCE_CLUSTER_SIZE }}"
       volumes:
       - name: shared
         persistentVolumeClaim:
