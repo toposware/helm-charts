@@ -2,16 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-acme:
-  email: nobody@nowhere.com
-
 # possible values are staging or production
-environment: staging
-otelHost: otel.nowhere.com
-kibanaHost: kibana.nowhere.com
-elasticsearchHost: elasticsearch.nowhere.com
 prometheusHost: prometheus.nowhere.com
 
 prometheus:
   user: nobody
   password: secret
+
+elastic:
+  apiKey: secret
