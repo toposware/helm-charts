@@ -33,3 +33,52 @@ spec:
                   number: 9090
             path: /
             pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: otel-grpc
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+spec:
+  tls:
+    - hosts:
+        - "grpc.{{ .Values.otelHost }}"
+      secretName: "grpc.{{ .Values.otelHost }}-secret-tls"
+  rules:
+    - host: "grpc.{{ .Values.otelHost }}"
+      http:
+        paths:
+          - backend:
+              service:
+                name: otel-collector-opentelemetry-collector
+                port:
+                  number: 4317
+            path: /
+            pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: otel-http
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "letsencrypt-{{ .Values.environment }}"
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.otelHost }}
+      secretName: "{{ .Values.otelHost }}-secret-tls"
+  rules:
+    - host: {{ .Values.otelHost }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: otel-collector-opentelemetry-collector
+                port:
+                  number: 4318
+            path: /
+            pathType: Prefix
