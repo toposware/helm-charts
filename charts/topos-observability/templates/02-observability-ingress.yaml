@@ -4,7 +4,6 @@ data:
 kind: Secret
 metadata:
   name: prometheus-basic-auth
-  namespace: default
 type: Opaque
 ---
 apiVersion: networking.k8s.io/v1
