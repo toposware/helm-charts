@@ -3,13 +3,13 @@
 # Declare variables to be passed into your templates.
 acme:
   email: nobody@nowhere.com
-  dnsZone: nowhere
-  region: nowhere
-  hostedZoneID: nowhere
-  role: nobody
 
 # possible values are staging or production
 environment: staging
+dnsZone: nowhere
+region: nowhere
+hostedZoneID: nowhere
+role: nobody
 otelHost: otel.nowhere.com
 prometheusHost: prometheus.nowhere.com
 
